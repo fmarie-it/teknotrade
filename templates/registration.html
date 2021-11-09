@@ -113,25 +113,34 @@
           <div class="col-md-7 col-lg-5">
             <div class="login-wrap p-4 p-md-5 mt-5">
               <h3 class="text-center mb-4">Create Your Account</h3>
-              <form action="#" class="signup-form">
+              <form method="POST" action="{% url 'user_app:register_view' %}" class="signup-form">
+                {% csrf_token %}
                 <div class="form-group mb-3">
-                  <label class="label" for="name">Full Name</label>
-                  <input type="text" class="form-control" placeholder="Full Name">
+                  <label class="label" for="username">Username</label>
+                  <input name="username" type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="label" for="firstname">First Name</label>
+                  <input name="first_name" type="text" class="form-control" placeholder="First Name">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="label" for="lastname">Last Name</label>
+                  <input name="last_name" type="text" class="form-control" placeholder="Last Name">
                 </div>
                 <div class="form-group mb-3">
                   <label class="label" for="email">Email Address</label>
-                  <input type="text" class="form-control" placeholder="Email Address">
+                  <input name="email" type="text" class="form-control" placeholder="Email Address">
                 </div>
                 <div class="form-group mb-3">
                   <label class="label" for="password">Password</label>
-                  <input id="password-field" type="password" class="form-control" placeholder="Password">
+                  <input name="password" id="password-field" type="password" class="form-control" placeholder="Password">
                   <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 </div>
                 <div class="form-group">
                   <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
                 </div>
               </form>
-              <p><span class="text-secondary">I'm already a member!</span> <a data-toggle="tab" href="#signin">Sign In</a></p>
+              <p><span class="text-secondary">I'm already a member!</span> <a data-toggle="tab" href="{% url 'user_app:login_view' %}">Sign In</a></p>
             </div>
           </div>
         </div>
