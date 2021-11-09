@@ -1,0 +1,2 @@
+# waterhub-system
+WaterHub is a web-based billing and collection system that automates the process of collecting and making payments, sending invoices, viewing and releasing of bills, tracking invoices and payments for water bills directly on site with real-time payment confirmation and issuing of official receipt. The system will also notify registered consumers about due dates and special announcements via Email and SMS message. This will also serve as a repository of billing information and monitoring system for the administration and end-users.
