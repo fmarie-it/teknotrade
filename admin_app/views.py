@@ -19,7 +19,7 @@ class AdminDashboard(View):
             #     'invoice': invoice,
             #     'consumer': consumer,
             # }
-            return render(request, 'home.html') #, context
+            return render(request, 'admin_dashboard.html') #, context
         else:
             return redirect("user_app:login_view")
 
