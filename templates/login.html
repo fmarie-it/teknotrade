@@ -1,106 +1,173 @@
-<!DOCTYPE html>
-<html>
-  <title>Water Hub</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Raleway"
-  /><link
-    rel="stylesheet"
-    href="https://www.w3schools.com/lib/w3-colors-highway.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  /><link
-    href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
-    rel="stylesheet"
-  />
-
-  <style>
-    html,
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-      font-family: "Raleway", sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
-    }
-  </style>
-  <body class="w3-light">
-    <!-- Navbar  -->
-    <nav>
-      <div class="w3-top" style="position: relative">
-        <div class="w3-bar w3-white w3-padding" style="letter-spacing: 4px">
-          <a href="/templates/waterhub_home.html" class="w3-bar-item w3-button"
-            >WaterHub Billing System asdasdhehe</a
-          >
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+      body {
+        font-family: "Lato", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        font-weight: normal;
+        background: #f2d6eb;
+        color: gray;
+      }
+      .login-wrap {
+        position: relative;
+        background: #3c3d47;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+        -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+        z-index: 0;
+      }
+      .login-wrap h3 {
+        font-weight: 300;
+        color: #fff;
+        font-size: 22px; 
+      }
+      .login-wrap .img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-bottom: 20px; 
+      }
+      .form-control {
+        height: 52px;
+        color: #fff !important;
+        font-size: 16px;
+        border-radius: 40px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .field-icon {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 15px;
+      }
+      .btn.btn-primary {
+        background: #01d28e !important;
+        border: 1px solid #01d28e !important;
+        color: #fff !important;
+      }
+      a {
+        -webkit-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        transition: .3s all ease;
+        color: #01d28e;
+      }
+      .form-group {
+        position: relative;
+        margin-bottom: 1rem;
+      }
+      label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
+      .form-group label {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #fff;
+      }
+      .form-control:focus, .form-control:active {
+        outline: none !important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+      }
+      .form-control {
+        height: 52px;
+        color: #fff !important;
+        font-size: 16px;
+        border-radius: 40px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .signup-icon {
+        font-size: 24px;
+        text-decoration: none;
+      }
+    </style>
+	</head>
+	<body>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 col-lg-5">
+            <div class="login-wrap p-4 p-md-5 mt-5">
+              <form action="#" class="signup-form">
+                <div class="form-group mb-3">
+                  <label class="label" for="email">Email Address</label>
+                  <input type="text" class="form-control" placeholder="Email Address">
+                </div>
+                <div class="form-group mb-3">
+                  <label class="label" for="password">Password</label>
+                  <input id="password-field" type="password" class="form-control" placeholder="Password">
+                  <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="form-control btn btn-primary submit px-3">Login</button>
+                </div>
+              </form>
+              <p><span class="text-secondary">Not yet a member?</span> <a data-toggle="tab" href="#signin">Register</a></p>
+              <div class="txt1 text-center p-t-54 p-b-20">
+                <span>
+                  Or sign up using
+                </span>
+              </div>
+              <div class="flex-c-m text-center">
+                <a href="#" class="login100-social-item signup-icon me-1" style="color: #3b5998">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="login100-social-item signup-icon me-1" style="color: #1da1f2">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="login100-social-item signup-icon" style="color: #ea4335">
+                  <i class="fa fa-google"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
+    </section>
 
-    <div class="w3-row">
-      <div class="w3-col w3-center w3-padding" style="width: 50%; height: 90vh">
-        <div class="w3-modal-content" style="max-width: 500px; top: 10%">
-          <div class="w3-left">
-            <h1><b>Log In</b></h1>
-            <br />
-          </div>
-
-          <form method="POST" class="" action="{% url 'app_user:login_view' %}">
-            {% csrf_token %}
-            <div>
-              <input
-                class="w3-input w3-border w3-margin-bottom w3-round-xxlarge"
-                type="text"
-                placeholder="Username"
-                name="username"
-                required
-              />
-
-              <input
-                class="w3-input w3-border w3-margin-bottom w3-round-xxlarge"
-                type="password"
-                placeholder="Password"
-                name="password"
-                required
-              />
-
-            </div>
-            <div>
-              <p></p>
-              <br />
-              <br />
-              <button
-                class="w3-button w3-block w3-highway-blue w3-ripple"
-                type="submit"
-              >
-                Login
-              </button>
-            </div>
-          </form>
-
-          <div class="" style="margin-top: -20px">
-            <br />
-            <p>Don't have an account yet?</p>
-            <a
-              href="{% url 'app_user:register_view' %}"
-              class="w3-button w3-block w3-ripple w3-blue"
-            >
-              Register
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="w3-col" style="width: 50%"></div>
-    </div>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      (function($) {
+        "use strict";
+        $(".toggle-password").click(function() {
+          $(this).toggleClass("fa-eye fa-eye-slash");
+          var input = $($(this).attr("toggle"));
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+      })(jQuery);
+    </script>
+	</body>
 </html>
