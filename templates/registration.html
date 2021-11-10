@@ -37,18 +37,6 @@
         margin: 0 auto;
         margin-bottom: 20px; 
       }
-      .form-control {
-        height: 52px;
-        color: #fff !important;
-        font-size: 16px;
-        border-radius: 40px;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding-left: 20px;
-        padding-right: 20px;
-      }
       .field-icon {
         position: absolute;
         top: 50%;
@@ -119,13 +107,19 @@
                   <label class="label" for="username">Username</label>
                   <input name="username" type="text" class="form-control" placeholder="Username">
                 </div>
-                <div class="form-group mb-3">
-                  <label class="label" for="firstname">First Name</label>
-                  <input name="first_name" type="text" class="form-control" placeholder="First Name">
-                </div>
-                <div class="form-group mb-3">
-                  <label class="label" for="lastname">Last Name</label>
-                  <input name="last_name" type="text" class="form-control" placeholder="Last Name">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group mb-3">
+                      <label class="label" for="firstname">First Name</label>
+                      <input name="first_name" type="text" class="form-control" placeholder="First Name">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group mb-3">
+                      <label class="label" for="lastname">Last Name</label>
+                      <input name="last_name" type="text" class="form-control" placeholder="Last Name">
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group mb-3">
                   <label class="label" for="email">Email Address</label>
