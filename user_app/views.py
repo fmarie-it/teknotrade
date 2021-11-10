@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import Group, User #, auth
 from django.contrib.auth import authenticate, login, logout
 # from .models import CustomUser
-# from .forms import CustomUserForm, CreateUserForm
+from .forms import UserForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -64,14 +64,14 @@ class RegisterView(View):
         email = request.POST.get('email')
         password = request.POST.get('password')
         user = User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
-        # form = CustomUserForm(request.POST)
-        # if form.is_valid():
-        #     custom_user = form.save(commit=False)
-        #     custom_user.user_id = user
-        #     custom_user.save()     
-        return redirect('user_app:login_view')
-        # else:
-        #     return HttpResponse(form.errors)
+        form = UserForm(request.POST)
+        if form.is_valid():
+            custom_user = form.save(commit=False)
+            custom_user.user_id = user
+            custom_user.save()     
+            return redirect('user_app:login_view')
+        else:
+            return HttpResponse(form.errors)
 
 # @login_required
 class HomeView(View):
