@@ -7,20 +7,19 @@
 }
 
 .carousel-item:nth-child(1) {
-  background-image: url('../img/sample-logo.png');
+  background-image: url("/static/img/deal.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: 0px -500px;
 }
 .carousel-item:nth-child(2) {
-  background-image: url('../images/image1.jpg');
+  background-image: url("/static/img/image1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
 }
 .carousel-item:nth-child(3) {
-  background-image: url('../images/image1.jpg');
-  
+  background-image: url("/static/img/image1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -35,7 +34,7 @@
   .carousel-inner,
   .carousel-item,
   .carousel-item.active {
-    height: 50vh;
+    height: 55vh;
   }
 }
 
