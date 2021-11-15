@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>TeknoTrade | Home</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 2000;">
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand nav-link core-ignore" href="{% url 'user_app:home_view' %}">
+                <strong>TT | TeknoTrade</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fab fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link highlight" aria-current="page" href="{% url 'user_app:home_view' %}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle highlight" id="userPortalsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                        User Portals
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userPortalsDropdown">
+                        <li>
+                            <a class="dropdown-item" href="/client-login">User Portal</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/establishments-login">Establishment Portal</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link highlight" href="{% url 'user_app:about_view' %}">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link highlight" href="{% url 'user_app:contact_view' %}">Contact us</a>
+                </li>
+            </ul>
+
+            <!-- <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <br> -->
+
+            <ul class="navbar-nav d-flex flex-row">
+                <!-- Icons -->
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#" rel="nofollow" >
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#" rel="nofollow">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href=https://github.com/fmarie-it/teknotrade rel="nofollow" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+                <!-- <li class="nav-item me-3 me-lg-0">
+                <a class="btn btn-outline-success" href="{% url 'user_app:logout_view' %}">Logout</a>
+                </li> -->
+            </ul>
+            
+            <div class="navbar-nav d-flex flex-row ml-3">
+                <a class="btn btn-sm btn-outline-light core-ignore" href="{% url 'user_app:logout_view' %}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper section-padding-100">
+        <div class="search-close">
+            <i class="fab fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                            <button type="submit"><img src="{% static 'img/search.png' %}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fab fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+            </div>
+            <!-- Amado Nav -->
+            <nav class="amado-nav">
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="product-details.html">Product</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </nav>
+            <!-- Button Group -->
+            <div class="amado-btn-group mt-30 mb-100">
+                <a href="#" class="btn amado-btn mb-15 core-ignore">Discount</a>
+                <a href="#" class="btn amado-btn active core-ignore">New this week</a>
+            </div>
+            <!-- Cart Menu -->
+            <div class="cart-fav-search mb-100">
+                <a href="cart.html" class="cart-nav"><i class="fas fa-shopping-cart mr-2"></i> Cart <span class="text-dark">(0)</span></a>
+                <a href="#" class="fav-nav"><i class="fas fa-star mr-2"></i> Favourite</a>
+                <a href="#" class="search-nav" style="margin-left: 2px"><i class="fas fa-search mr-2"></i> Search</a>
+            </div>
+        </header>
+        <!-- Header Area End -->
