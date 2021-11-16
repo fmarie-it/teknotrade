@@ -137,3 +137,19 @@ class AboutUsView(View):
             return render(request, 'aboutus.html') #, context
         else:
              return redirect("user_app:login_view")
+
+class AddProductView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # custom_user = User.objects.get(id=user)
+            # consumer = Consumer.objects.get(custom_user=custom_user)
+            # consumer = custom_user.get_all_registered_consumer.all()
+
+            # context = {
+            #     'consumer': consumer,
+            # }
+            return render(request, 'add_product.html') #, context
+        else:
+            return redirect("user_app:login_view")

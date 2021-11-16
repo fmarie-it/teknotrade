@@ -1,4 +1,5 @@
 {% load static %}
+{% load extras %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +34,7 @@
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
             aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fab fa-bars"></i>
+                <i class="fa fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarExample01">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -99,6 +101,7 @@
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
             <i class="fab fa-close" aria-hidden="true"></i>
+            <i class="fa fa-close" aria-hidden="true"></i>
         </div>
         <div class="container">
             <div class="row">
@@ -135,6 +138,7 @@
             <!-- Close Icon -->
             <div class="nav-close">
                 <i class="fab fa-close" aria-hidden="true"></i>
+                <i class="fa fa-close" aria-hidden="true"></i>
             </div>
             <!-- Logo -->
             <div class="logo">
@@ -143,13 +147,12 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="product-details.html">Product</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
-                    <li> </li>
-                    <!-- <li><a href="checkout.html">Submit a report</a></li>
+                    <li class="{% active '/' 'active' %}"><a href="/">Home</a></li>
+                    <li><a href="shop.html">Search Product</a></li>
+                    <li class="{% active '/product/add' 'active' %}"><a href="/product/add">Add Product</a></li>
+                    <li><a href="cart.html">View Offers</a></li>
+                    <li><a href="checkout.html">Cart</a></li>
+                    <!-- <li><a href="checkout.html">Submit a report</a></li> -->
                 </ul>
             </nav>
             <!-- Modal Group -->
