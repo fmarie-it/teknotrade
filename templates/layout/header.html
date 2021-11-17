@@ -38,7 +38,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarExample01">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                <li class="nav-item active">
+                <li class="nav-item {% active '/home' 'active' %}">
                     <a class="nav-link highlight" aria-current="page" href="{% url 'user_app:home_view' %}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
@@ -71,6 +71,11 @@
             <ul class="navbar-nav d-flex flex-row">
                 <!-- Icons -->
                 <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link user-profile" href="{% url 'user_app:profile_view' %}" rel="nofollow" >
+                        <i class="fa fa-user-circle"></i>
+                    </a>
+                </li>
+                <!-- <li class="nav-item me-3 me-lg-0">
                     <a class="nav-link" href="#" rel="nofollow" >
                         <i class="fab fa-facebook-f"></i>
                     </a>
@@ -84,9 +89,6 @@
                     <a class="nav-link" href=https://github.com/fmarie-it/teknotrade rel="nofollow" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                </li>
-                <!-- <li class="nav-item me-3 me-lg-0">
-                <a class="btn btn-outline-success" href="{% url 'user_app:logout_view' %}">Logout</a>
                 </li> -->
             </ul>
             
@@ -169,9 +171,9 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="{% active '/' 'active' %}"><a href="/">Home</a></li>
-                    <li><a href="{% url 'user_app:search_product_view' %}">Search Product</a></li>
-                    <li class="{% active '/product/add' 'active' %}"><a href="/product/add">Add Product</a></li>
+                    <li class="{% active '/home' 'active' %}"><a href="{% url 'user_app:home_view' %}">Home</a></li>
+                    <li class="{% active '/product/search' 'active' %}"><a href="{% url 'user_app:search_product_view' %}">Search Product</a></li>
+                    <li class="{% active '/product/add' 'active' %}"><a href="{% url 'user_app:add_product_view' %}">Add Product</a></li>
                     <li><a href="cart.html">View Offers</a></li>
                     <li><a href="checkout.html">Cart</a></li>
                     <!-- <li><a href="checkout.html">Submit a report</a></li> -->

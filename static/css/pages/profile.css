@@ -1,0 +1,104 @@
+.profile * {
+    margin: 0;
+    padding: 0
+}
+
+.profile .card {
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    background: rgba(0,0,0,0.7);
+    color: white;
+}
+
+.profile .image img {
+    transition: all 0.5s
+}
+
+.profile .card:hover .image img {
+    transform: scale(1.5)
+}
+
+.profile .name {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.profile .idd {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.profile .idd1 {
+    font-size: 12px
+}
+
+.profile .number {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.profile .follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #ddd
+}
+
+.profile .profile-btn {
+    border-radius: 50%;
+}
+
+.profile .edit-btn {
+    border-radius: 0;
+    padding: 13px 28px;
+    transition: all 0.2s ease;
+    max-width: 100%;
+}
+.profile .edit-btn:hover {
+    color: #f5a623;
+}
+
+.profile .text span {
+    font-size: 13px;
+    color: #ddd;
+    font-weight: 500
+}
+
+.profile .icons i {
+    font-size: 19px
+}
+
+.profile hr .new1 {
+    border: 1px solid
+}
+.profile .form-control {
+    height: 40px;
+    color: #fff !important;
+    font-size: 12px;
+    border-radius: 40px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.profile .row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+.profile .join {
+    font-size: 12px;
+    color: #555;
+    font-weight: bold
+}
+
+.profile .date {
+    background-color: #ccc
+}
