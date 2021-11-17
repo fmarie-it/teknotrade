@@ -22,14 +22,16 @@
                     <div class="px-2 rounded mt-2 mb-2 date"> 
                         <span class="join">Joined May 2021</span> 
                     </div>
-                    <form class="w-100 mt-3">
+                    <form class="w-100 mt-3" method="POST" action="{% url 'user_app:edit_profile_view' %}">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col">
                               <div class="form-group mb-3 mr-2">
                                 <label class="label text-secondary h6 small mb-0" for="firstname">First Name</label>
                                 <input id="firstname" name="first_name" type="text" class="form-control" autofocus placeholder="First Name" value="Jboy">
+                                <input type="number" name="id"hidden>
                               </div>
+
                             </div>
                             <div class="col">
                               <div class="form-group mb-3">
@@ -39,11 +41,46 @@
                             </div>
                         </div>
                         <div class="form-group mb-3">
+                            <div class="form-group mb-3">
+                            <label class="label text-secondary h6 small mb-0" for="username">Username</label>
+                            <input id="username" name="username" type="text" class="form-control" placeholder="username" value="jj">
+                        </div>
                             <label class="label text-secondary h6 small mb-0" for="email">Email Address</label>
                             <input id="email" name="email_address" type="email" class="form-control" placeholder="Email Address" value="jboy@mail.com">
                         </div>
+                        <div class="row">
+                            <div class="col">
+                              <div class="form-group mb-3 mr-2">
+                                <label class="label text-secondary h6 small mb-0" for="street">Street</label>
+                                <input id="street" name="street" type="text" class="form-control" autofocus placeholder="Street" value="Jboy">
+                              </div>
+
+                            </div>
+                            <div class="col">
+                              <div class="form-group mb-3">
+                                <label class="label text-secondary h6 small mb-0" for="brgy">Barangay</label>
+                                <input id="brgy"  name="brgy" type="text" class="form-control" placeholder="brgy" value="Pila">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                              <div class="form-group mb-3 mr-2">
+                                <label class="label text-secondary h6 small mb-0" for="cityprovince">City Province</label>
+                                <input id="cityprovince" name="cityprovince" type="text" class="form-control" autofocus placeholder="cityprovince" value="Jboy">
+                              </div>
+
+                            </div>
+                            <div class="col">
+                              <div class="form-group mb-3">
+                                <label class="label text-secondary h6 small mb-0" for="zipcode">Zip Code</label>
+                                <input id="zipcode"  name="zipcode" type="text" class="form-control" placeholder="zipcode" value="Pila">
+                              </div>
+                            </div>
+                        </div>
+                        
                         <div class="mt-2 text-center"> 
-                            <button type="submit" class="edit-btn btn btn-sm btn-outline-light">Save</button> 
+                            <button type="submit" class="edit-btn btn btn-sm btn-outline-light" href="{% url 'user_app:profile_view' %}">Save</button> 
                         </div>
                     </form>
                     <!-- <div class="gap-3 icons d-flex flex-row justify-content-center align-items-center"> 
