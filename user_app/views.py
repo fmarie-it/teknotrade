@@ -63,12 +63,12 @@ class RegisterView(View):
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user = User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
+        User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
         # form = UserForm(request.POST)
         # if form.is_valid():
         #     custom_user = form.save(commit=False)
         #     custom_user.user_id = user
-        user.save()     
+        #     custom_user.save()     
         return redirect('user_app:login_view')
         # else:
         #     return HttpResponse(form.errors)
