@@ -13,6 +13,7 @@ from django.utils import timezone
 #     class Meta:
 #         db_table = "CustomUser"
 
+
 class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
@@ -41,4 +42,14 @@ class Product(models.Model):
     def __str__(self):
         return self.product_name
 
+
+class Address(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='get_user_address')
+	street = models.CharField(max_length = 50)
+	brgy = models.CharField(max_length = 50)
+	zipcode = models.IntegerField()
+	cityprovince = models.CharField(max_length = 50)
+	
+	class Meta:
+		db_table = 'Address'
 
