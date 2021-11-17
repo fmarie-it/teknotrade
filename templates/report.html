@@ -4,97 +4,130 @@
  
 {% block content %}
 
-<style>
-*{
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-}
-body{
-    font-family: 'Montserrat';
-}
-section{
-    height: 100vh;
-    width: 100%;
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.container{
-    width: 90%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0px 0px 20px #000010;
-    background-color: white;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-.form-group{
-    width: 100%;
-    margin-top: 20px;
-    font-size: 20px;
-}
-.form-group input,
-.form-group textarea{
-    width: 100%;
-    padding: 5px;
-    font-size: 18px;
-    border: 1px solid rgba(128, 128, 128, 0.199);
-}
 
-textarea{
-    resize: vertical;
-}
-button[type="submit"]{
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 20px;
-    font-size: 24px;
-    border-radius: 8px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: .3s ease background-color;
-}
-button[type="submit"]:hover{
-    background-color: rgb(120, 241, 156);
-}
+<style>
+	/* body {
+        background: #f2d6eb;
+		background-image: url("/static/img/bg.jpg");
+        color: gray;
+      } */
+	.contact
+	{
+		font-family: "Lato", Arial, sans-serif;
+        font-size: 16px;
+		line-height: 1.8;
+        font-weight: normal;
+		position: relative;
+		min-height: 100vh;
+		padding: 50px 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		background-size: cover;
+	}
+	.container .contactInfo .box .text h3
+	{
+		font-weight: 500;       
+		color: #000000;
+	}
+	.contactForm   
+	{
+		width: 40%;
+		padding: 40px;
+		background: #3c3d47;
+		border-radius: 10px;
+	}
+	.contactForm h2
+	{
+		padding-bottom: 10px;
+		font-size: 30px;
+		color: #fff;
+		font-weight: 500;
+	}
+	.contactForm .inputBox
+	{
+		position: relative;
+		width: 100%;
+		margin-top: 10px;
+	}
+	.contactForm .inputBox input,
+	.contactForm .inputBox textarea
+	{
+		width: 100%;
+		padding: 5px 0;
+		font-size: 16px;
+		margin: 10px 0;
+		border: none;
+		border-bottom: 2px solid #333; 
+		outline: none;
+		resize: none;
+	}
+	.contactForm .inputBox span
+	{
+		position: absolute;
+		left: 0;
+		padding: 0px 0;
+		font-size: 16px;
+		margin: 10px 0;
+		pointer-events: none;
+		transition: 0.5s;
+		color: #00bcd4;
+	}
+	.contactForm .inputBox input:focus ~ span,
+	.contactForm .inputBox input:valid ~ span,
+	.contactForm .inputBox textarea:focus ~ span,
+	.contactForm .inputBox textarea:valid ~ span
+	{
+		color: #00bcd4;
+		font-size: 12px;
+		transform: translateY(-20px);
+	}
+	.contactForm .inputBox input[type="submit"]
+	{
+		width: 200px;
+		background: #01d28e;
+		color: #fff;
+		border: none;
+		cursor: pointer;
+		padding: 10px;
+		font-size: 18px;
+		border-radius: 10px;
+        width: 100%;
+	}
 
 </style>
-<body>
-    <section>
-        <div class="container">
-            <form action="">
+	<section class="contact">
+			<div class="contactForm">
+				<form>
+					<h2>Submit Report</h2>
+					<div class="inputBox">
+						<input type="text" name="required">
+						<span>First Name</span>
+				 	</div>
 
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName">
-                </div>
+                     <div class="inputBox">
+						<input type="text" name="required">
+						<span>Last Name</span>
+				 	</div>
 
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName">
-                </div>
+				 	<div class="inputBox">
+						<input type="text" name="required">
+						<span>Email</span>
+				 	</div>
 
-                <div class="form-group">
-                    <label for="lastName">Email</label>
-                    <input type="email" id="email" name="email">
-                </div>
+				 	<div class="inputBox">
+						<textarea required="required" cols="20" rows="5"></textarea>
+						<span>Type your message</span>
+                        
+				 	</div>
 
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
-                </div>
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </section>
-</body>
-</html>
+				 	<div class="inputBox">
+						<input type="submit" name="Submit Report" value="Submit">
+				 	</div>
+				</form>
+			</div>
+		</div>
+	</section>
 
 {% endblock content %}

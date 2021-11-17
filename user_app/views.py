@@ -193,6 +193,14 @@ class ProfileView(View):
 
 
 class EditProfileView(View):
+            # context = {
+            #     'consumer': consumer,
+            # }
+            return render(request, 'profile.html') #, context
+        else:
+            return redirect("user_app:login_view")
+
+class ReportView(View):
 
     def get(self, request):
         if not request.user.is_staff:
@@ -205,5 +213,8 @@ class EditProfileView(View):
                 'user': user,
             }
             return render(request, 'edit-profile.html', context) #, context
+        else:
+            return redirect("user_app:login_view")
+            return render(request, 'report.html')
         else:
             return redirect("user_app:login_view")
