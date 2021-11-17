@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin_app',
-    'user_app'
+    'user_app',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -65,6 +67,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'extras': 'user_app.templatetags.extras',
+            }
         },
     },
 ]
@@ -80,10 +85,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
         # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'teknotradedb',
+        # 'NAME': 'appdev',,
         # 'USER': 'root',
         # 'PASSWORD': '',
-        # 'HOST': '127.0.0.1',
+        # 'HOST': 'localhost',
         # 'PORT': '3306',
         # 'OPTIONS': {
         #     'init_command': "SET sql_mode = 'STRICT_TRANS_TABLES'"

@@ -6,8 +6,24 @@ from django.contrib.auth import authenticate, login, logout
 # from .models import CustomUser
 from .forms import UserForm
 from django.contrib.auth.decorators import login_required
+#import pyrebase
 
 # Create your views here.
+#config = {
+#    'apiKey': "AIzaSyCMEEQ4rALIOf5lX0YuCvXXFABPk1ZvLjg",
+#    'authDomain': "databasedj-45b67.firebaseapp.com",
+#    'databaseURL': "https://databasedj-45b67-default-rtdb.firebaseio.com",
+#    'projectId': "databasedj-45b67",
+#    'storageBucket': "databasedj-45b67.appspot.com",
+#    'messagingSenderId': "606108675515",
+#    'appId': "1:606108675515:web:df26139a23b59f7f03e89e",
+ 
+#}
+
+#firebase=pyrebase.initialize_app(config)
+#authe = firebase.auth()
+#database = firebase.database()
+
 
 class LoginView(View):
     
@@ -121,3 +137,19 @@ class AboutUsView(View):
             return render(request, 'aboutus.html') #, context
         else:
              return redirect("user_app:login_view")
+
+class AddProductView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # custom_user = User.objects.get(id=user)
+            # consumer = Consumer.objects.get(custom_user=custom_user)
+            # consumer = custom_user.get_all_registered_consumer.all()
+
+            # context = {
+            #     'consumer': consumer,
+            # }
+            return render(request, 'add_product.html') #, context
+        else:
+            return redirect("user_app:login_view")
