@@ -106,6 +106,11 @@ class HomeView(View):
         else:
              return redirect("user_app:login_view")
 
+class LandingView(View):
+    
+    def get(self, request):
+        return render(request, 'landing.html') #, context
+
 class ContactUsView(View):
     
     def get(self, request):
