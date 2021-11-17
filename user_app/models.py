@@ -12,3 +12,33 @@ from django.utils import timezone
     
 #     class Meta:
 #         db_table = "CustomUser"
+
+class Category(models.Model):
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
+    name = models.CharField(max_length=100, null=False, blank=False)
+    # product = models.ForeignKey(
+    #     Product, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Product(models.Model):
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
+    
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,  related_name='get_all_users_product') #null=True, blank=True
+    product_name = models.CharField(max_length=100, null=True, blank=True) #, null=False, blank=False
+    image = models.ImageField(null=False, blank=False)
+    description = models.TextField()
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE,  related_name='get_category')
+
+    def __str__(self):
+        return self.product_name
+
+

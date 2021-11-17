@@ -17,7 +17,7 @@
                   </div>
                   <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                      <form method="POST" action="" class="tm-edit-product-form">
+                      <form method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form">
                         {% csrf_token %}
                         <div class="form-group mb-3">
                           <label
@@ -53,28 +53,13 @@
                             class="custom-select tm-select-accounts"
                             id="category"
                             name="category"
+                            required
                           >
                             <option disabled selected>Select Category</option>
-                            <option>Clothes</option>
-                            <option>Gadgets</option>
-                            <option>Appliances</option>
-                            <option>Foods</option>
-                            <option>Services</option>
-                            <option>Arts & Crafts</option>
+                            {% for category in categories %}
+                            <option>{{category.name}}</option>
+                            {% endfor %}
                           </select>
-                        </div>
-                        <div class="form-group mb-3">
-                          <label
-                            for="new_category"
-                            >New Category
-                          </label>
-                          <input
-                            id="new_category"
-                            name="new_category"
-                            type="text"
-                            class="form-control validate"
-                            required
-                          />
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
@@ -96,7 +81,7 @@
                       </div>
                     </div>
                     <div class="col-12 mt-4">
-                      <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+                      <input type="submit" class="btn btn-primary btn-block text-uppercase" value="Add Product Now">
                     </div>
                   </form>
                   </div>

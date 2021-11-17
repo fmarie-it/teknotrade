@@ -3,6 +3,8 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.models import Group, User #, auth
 from django.contrib.auth import authenticate, login, logout
+
+from user_app.models import Product, Category
 # from .models import CustomUser
 from .forms import UserForm
 from django.contrib.auth.decorators import login_required
@@ -148,29 +150,113 @@ class AddProductView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
+            categories = Category.objects.all()
             # custom_user = User.objects.get(id=user)
             # consumer = Consumer.objects.get(custom_user=custom_user)
             # consumer = custom_user.get_all_registered_consumer.all()
 
-            # context = {
-            #     'consumer': consumer,
-            # }
-            return render(request, 'add_product.html') #, context
+            context = {
+                'categories': categories,
+            }
+            return render(request, 'add_product.html', context) #, context
         else:
             return redirect("user_app:login_view")
+
+    def post(self,request):
+        user = request.user
+        #categories = user.category_set.all()
+        # categories = None
+
+        if request.method == 'POST':
+            product_name = request.POST.get('product_name')
+            description = request.POST.get('description')
+            category = request.POST.get('category')
+            images = request.FILES.getlist('images')
+            #Category.objects.filter(name=category)
+
+            if category is not None:
+                categories = Category.objects.get(name=category)
+
+                for image in images:
+                    Product.objects.create(
+                        user=user,
+                        product_name=product_name,
+                        image=image,
+                        description=description,
+                        category=categories
+                    )
+
+            Product.objects.create(
+                        user=user,
+                        product_name=product_name,
+                        image=images,
+                        description=description,
+                        category=categories
+                    )
+
+            return redirect('user_app:search_product_view')
+        else:
+            return HttpResponse('Invalid!') #form.errors
+
+        # context = {
+        #     'categories': categories,
+        # }
+
+        # return render(request, 'products.html', context)
+        # username = request.POST.get('username')
+        # first_name = request.POST.get('first_name')
+        # last_name = request.POST.get('last_name')
+        # email = request.POST.get('email')
+        # password = request.POST.get('password')
+        # User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
+        # # form = UserForm(request.POST)
+        # # if form.is_valid():
+        # #     custom_user = form.save(commit=False)
+        # #     custom_user.user_id = user
+        # #     custom_user.save()     
+        # return redirect('user_app:login_view')
+        # else:
+        #     return HttpResponse(form.errors)
 
 class SearchProductView(View):
 
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
+            products = Product.objects.all()
+            product_category = products.filter(user=user)
+            # product_category = products.get_category.all()
+            categories = Category.objects.all()
+            # categories = Category.objects.get(id=product_category)
+            # product_category = Category.get_category.all()
+            # categories = Category.objects.get(id=product_category) #get_category.all()
             # custom_user = User.objects.get(id=user)
             # consumer = Consumer.objects.get(custom_user=custom_user)
             # consumer = custom_user.get_all_registered_consumer.all()
+            
 
-            # context = {
-            #     'consumer': consumer,
-            # }
-            return render(request, 'products.html') #, context
+            context = {
+                'products': products,
+                'categories': categories,
+            }
+            return render(request, 'products.html', context) #, context
+        else:
+            return redirect("user_app:login_view")
+
+class GalleryView(View):
+
+    def gallery(self,request):
+        if not request.user.is_staff:
+            user = request.user
+            category = request.GET.get('category')
+            if category == None:
+                photos = Product.objects.filter(category__user=user)
+            else:
+                photos = Product.objects.filter(
+                    category__name=category, category__user=user)
+
+            categories = Category.objects.filter(user=user)
+            context = {'categories': categories, 'photos': photos}
+            return render(request, 'product.html', context)
         else:
             return redirect("user_app:login_view")
