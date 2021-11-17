@@ -260,3 +260,44 @@ class GalleryView(View):
             return render(request, 'product.html', context)
         else:
             return redirect("user_app:login_view")
+
+class ProfileView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # custom_user = User.objects.get(id=user)
+            # consumer = Consumer.objects.get(custom_user=custom_user)
+            # consumer = custom_user.get_all_registered_consumer.all()
+            context = {
+                'user': user,
+            }
+            return render(request, 'profile.html', context) #, context
+        else:
+            return redirect("user_app:login_view")
+
+
+class EditProfileView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # custom_user = User.objects.get(id=user)
+            # consumer = Consumer.objects.get(custom_user=custom_user)
+            # consumer = custom_user.get_all_registered_consumer.all()
+
+            context = {
+                'user': user,
+            }
+            return render(request, 'edit-profile.html', context) #, context
+        else:
+            return redirect("user_app:login_view")
+
+class ReportView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            return render(request, 'report.html')
+        else:
+            return redirect("user_app:login_view")
