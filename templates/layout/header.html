@@ -99,7 +99,40 @@
     </nav>
     <!-- Navbar -->
 
+<!-- Modal -->
+{% csrf_token %}
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <label class="label" for="firstname">First Name</label>
+          <input name="name" type="text" class="form-control" >
+          <label class="label" for="lastname">Lastname</label>
+          <input name="name" type="text" class="form-control" >
+          <label class="label" for="username">Username</label>
+          <input name="name" type="text" class="form-control" >
+          <label class="label" for="email">Email</label>
+          <input name="name" type="text" class="form-control" >
+          <label class="label" for="address">Address</label>
+          <input name="name" type="text" class="form-control" >
 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"style="background-color: yellow;">Update</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"style="background-color: yellow;">Close</button>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- end of Modal -->
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">

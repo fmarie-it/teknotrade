@@ -12,43 +12,35 @@
                     <button class="btn btn-secondary profile-btn"> 
                         <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
                     </button> 
-                    
-                    <span class="name mt-3"></span> 
-                    <span class="idd">{{user.first_name}} {{user.last_name}}</span>
+                    <span class="name mt-3">Eleanor Pena</span> 
+                    <span class="idd">@eleanorpena</span>
                     <!-- <div class="d-flex flex-row justify-content-center align-items-center mt-3"> 
                         <span class="number">1069 
                             <span class="follow">Followers</span>
                         </span> 
                     </div> -->
                     <div class="px-2 rounded mt-2 mb-2 date"> 
-                        <span class="join">Joined {{user.date_joined}}</span> 
+                        <span class="join">Joined May 2021</span> 
                     </div>
                     <form class="w-100 mt-3">
                         <div class="row">
                             <div class="col">
                               <div class="form-group mb-3">
-                                <label class="label text-secondary h6 small mb-0" for="firstname">{{user.first_name}}</label>
+                                <label class="label text-secondary h6 small mb-0" for="firstname">First Name</label>
                                 <div>Jboy</div>
                               </div>
                             </div>
                             <div class="col">
                               <div class="form-group mb-3">
                                 <label class="label text-secondary h6 small mb-0" for="lastname">Last Name</label>
-                                <div>{{user.last_name}}</div>
+                                <div>Pila</div>
                               </div>
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <label class="label text-secondary h6 small mb-0" for="email">Email Address</label>
-                            <div>{{user.email}}</div>
+                            <div>Jboy@mail.com</div>
                         </div>
-                        <div class="form-group mb-3">
-                          <div class="form-group mb-3">
-                            <label class="label text-secondary h6 small mb-0" for="address">Address</label>
-                            <div>{{address.street}} {{address.brgy}} {{user.cityprovince}} {{user.zipcode}}</div>
-                        </div>
-                        </div>
-                       
                     </form>
                     <!-- <div class="gap-3 icons d-flex flex-row justify-content-center align-items-center"> 
                         <span><i class="fab fa-twitter"></i></span> 
@@ -64,5 +56,4 @@
         </div>
     </div>
 </div>
-
 {% endblock content %}
