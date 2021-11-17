@@ -190,3 +190,12 @@ class ProfileView(View):
             return render(request, 'profile.html') #, context
         else:
             return redirect("user_app:login_view")
+
+class ReportView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            return render(request, 'report.html')
+        else:
+            return redirect("user_app:login_view")
