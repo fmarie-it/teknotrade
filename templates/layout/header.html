@@ -163,14 +163,14 @@
                 <i class="fa fa-close" aria-hidden="true"></i>
             </div>
             <!-- Logo -->
-            <div class="logo">
+            <!-- <div class="logo">
                 <a href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
-            </div>
+            </div> -->
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
                     <li class="{% active '/' 'active' %}"><a href="/">Home</a></li>
-                    <li><a href="shop.html">Search Product</a></li>
+                    <li><a href="{% url 'user_app:search_product_view' %}">Search Product</a></li>
                     <li class="{% active '/product/add' 'active' %}"><a href="/product/add">Add Product</a></li>
                     <li><a href="cart.html">View Offers</a></li>
                     <li><a href="checkout.html">Cart</a></li>

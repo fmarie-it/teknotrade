@@ -17,7 +17,8 @@
                   </div>
                   <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                      <form action="" class="tm-edit-product-form">
+                      <form method="POST" action="" class="tm-edit-product-form">
+                        {% csrf_token %}
                         <div class="form-group mb-3">
                           <label
                             for="name"
@@ -25,7 +26,7 @@
                           </label>
                           <input
                             id="name"
-                            name="name"
+                            name="product_name"
                             type="text"
                             class="form-control validate"
                             required
@@ -38,6 +39,7 @@
                           >
                           <textarea
                             class="form-control validate"
+                            name="description"
                             rows="3"
                             required
                           ></textarea>
@@ -50,12 +52,29 @@
                           <select
                             class="custom-select tm-select-accounts"
                             id="category"
+                            name="category"
                           >
-                            <option selected>Select Category</option>
-                            <option value="1">New Arrival</option>
-                            <option value="2">Most Popular</option>
-                            <option value="3">Trending</option>
+                            <option disabled selected>Select Category</option>
+                            <option>Clothes</option>
+                            <option>Gadgets</option>
+                            <option>Appliances</option>
+                            <option>Foods</option>
+                            <option>Services</option>
+                            <option>Arts & Crafts</option>
                           </select>
+                        </div>
+                        <div class="form-group mb-3">
+                          <label
+                            for="new_category"
+                            >New Category
+                          </label>
+                          <input
+                            id="new_category"
+                            name="new_category"
+                            type="text"
+                            class="form-control validate"
+                            required
+                          />
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
@@ -66,13 +85,14 @@
                         ></i>
                       </div>
                       <div class="custom-file mt-3 mb-3">
-                        <input id="fileInput" type="file" style="display:none;" />
-                        <input
+                        <input name="images" id="fileInput" type="file" multiple class="btn btn-primary btn-block mx-auto"
+                        value="UPLOAD PRODUCT IMAGE" />
+                        <!-- <input
                           type="button"
                           class="btn btn-primary btn-block mx-auto"
                           value="UPLOAD PRODUCT IMAGE"
                           onclick="document.getElementById('fileInput').click();"
-                        />
+                        /> -->
                       </div>
                     </div>
                     <div class="col-12 mt-4">
@@ -86,6 +106,8 @@
         </div>
     </div>
 </div>
+
 <!-- Product Catagories Area End -->
+
 
 {% endblock content %}
