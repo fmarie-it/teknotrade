@@ -141,3 +141,4 @@ cython_debug/
 *.pyc
 *.pyc
 *.pyc
+user_app/migrations/0001_initial.py
