@@ -9,18 +9,19 @@
         <div class="profile container tm-mt-big tm-mb-big d-flex justify-content-center">
             <div class="card p-4">
                 <div class=" image d-flex flex-column justify-content-center align-items-center"> 
+
                     <button class="btn btn-secondary profile-btn"> 
                         <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" />
                     </button> 
-                    <span class="name mt-3">Eleanor Pena</span> 
-                    <span class="idd">@eleanorpena</span>
+                    <span class="name mt-3">{{user.first_name}} {{user.last_name}}</span> 
+                    <span class="idd">@{{user.first_name}}{{user.last_name}}</span>
                     <!-- <div class="d-flex flex-row justify-content-center align-items-center mt-3"> 
                         <span class="number">1069 
                             <span class="follow">Followers</span>
                         </span> 
                     </div> -->
                     <div class="px-2 rounded mt-2 mb-2 date"> 
-                        <span class="join">Joined May 2021</span> 
+                        <span class="join">Joined {{user.date_joined}}{{user.id}} </span> 
                     </div>
                     <form class="w-100 mt-3" method="POST" action="{% url 'user_app:edit_profile_view' %}">
                         {% csrf_token %}
@@ -28,38 +29,38 @@
                             <div class="col">
                               <div class="form-group mb-3 mr-2">
                                 <label class="label text-secondary h6 small mb-0" for="firstname">First Name</label>
-                                <input id="firstname" name="first_name" type="text" class="form-control" autofocus placeholder="First Name" value="Jboy">
-                                <input type="number" name="id"hidden>
+                                <input id="id-firstname" name="user-first_name" type="text" class="form-control" autofocus placeholder="First Name" value="{{user.first_name}}">
+                                <input type="number" name="user-id" value="{{user.id}}" hidden>
                               </div>
 
                             </div>
                             <div class="col">
                               <div class="form-group mb-3">
                                 <label class="label text-secondary h6 small mb-0" for="lastname">Last Name</label>
-                                <input id="lastname"  name="last_name" type="text" class="form-control" placeholder="Last Name" value="Pila">
+                                <input id="lastname"  name="last_name" type="text" class="form-control" placeholder="Last Name" value="{{user.last_name}}">
                               </div>
                             </div>
                         </div>
                         <div class="form-group mb-3">
                             <div class="form-group mb-3">
                             <label class="label text-secondary h6 small mb-0" for="username">Username</label>
-                            <input id="username" name="username" type="text" class="form-control" placeholder="username" value="jj">
+                            <input id="username" name="username" type="text" class="form-control" placeholder="username" value="{{user.username}}">
                         </div>
                             <label class="label text-secondary h6 small mb-0" for="email">Email Address</label>
-                            <input id="email" name="email_address" type="email" class="form-control" placeholder="Email Address" value="jboy@mail.com">
+                            <input id="email" name="email_address" type="email" class="form-control" placeholder="Email Address" value="{{user.email}}">
                         </div>
                         <div class="row">
                             <div class="col">
                               <div class="form-group mb-3 mr-2">
                                 <label class="label text-secondary h6 small mb-0" for="street">Street</label>
-                                <input id="street" name="street" type="text" class="form-control" autofocus placeholder="Street" value="Jboy">
+                                <input id="street" name="street" type="text" class="form-control" autofocus placeholder="Street" value="{{address.street}}">
                               </div>
 
                             </div>
                             <div class="col">
                               <div class="form-group mb-3">
                                 <label class="label text-secondary h6 small mb-0" for="brgy">Barangay</label>
-                                <input id="brgy"  name="brgy" type="text" class="form-control" placeholder="brgy" value="Pila">
+                                <input id="brgy"  name="brgy" type="text" class="form-control" placeholder="brgy" value="Barangay">
                               </div>
                             </div>
                         </div>
@@ -67,20 +68,20 @@
                             <div class="col">
                               <div class="form-group mb-3 mr-2">
                                 <label class="label text-secondary h6 small mb-0" for="cityprovince">City Province</label>
-                                <input id="cityprovince" name="cityprovince" type="text" class="form-control" autofocus placeholder="cityprovince" value="Jboy">
+                                <input id="cityprovince" name="cityprovince" type="text" class="form-control" autofocus placeholder="cityprovince" value="City Province">
                               </div>
 
                             </div>
                             <div class="col">
                               <div class="form-group mb-3">
                                 <label class="label text-secondary h6 small mb-0" for="zipcode">Zip Code</label>
-                                <input id="zipcode"  name="zipcode" type="text" class="form-control" placeholder="zipcode" value="Pila">
+                                <input id="zipcode"  name="zipcode" type="text" class="form-control" placeholder="zipcode" value="Zipcode">
                               </div>
                             </div>
                         </div>
                         
                         <div class="mt-2 text-center"> 
-                            <button type="submit" class="edit-btn btn btn-sm btn-outline-light" href="{% url 'user_app:profile_view' %}">Save</button> 
+                            <button type="submit" class="edit-btn btn btn-sm btn-outline-light" href="{% url 'user_app:profile_view' %}" name="save" id="save">Save</button> 
                         </div>
                     </form>
                     <!-- <div class="gap-3 icons d-flex flex-row justify-content-center align-items-center"> 

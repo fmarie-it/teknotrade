@@ -3,10 +3,11 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.models import Group, User #, auth
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.models import User
 from user_app.models import Product, Category
 # from .models import CustomUser
 from .forms import UserForm
+from .forms import AddressForm
 from django.contrib.auth.decorators import login_required
 from user_app.models import Address
 #import pyrebase
@@ -284,29 +285,29 @@ class EditProfileView(View):
        
     def get(self,request):
         user = User.objects.all()
-        address = Address.objects.all()
+        address= Address.objects.all()
        
         context ={
             'users':user,
             'address':address
         }
-        return render(request, 'edit-profile.html')
+        return render(request, 'edit-profile.html', context)
     
     # register user [1]
     def post(self,request):
         # return render(request, 'Registration_page.html', context)
-        cid = request.POST.get('username')
+        cid = request.POST.get("user-id")
         username = request.POST.get('username')
-        first_name = request.POST.get('first_name')
+        first_name = request.POST.get('user-first_name')
         last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
+        email = request.POST.get('email_address')
         address = request.POST.get('address')
         street = request.POST.get('street')
         brgy = request.POST.get('brgy')
         cityprovince = request.POST.get('cityprovince')
         zipcode = request.POST.get('zipcode')
         user = request.user
-        User.objects.filter(id = cid ).update(username=username,first_name=first_name,last_name=last_name,email=email)
+        User.objects.filter(id = cid).update(username=username,first_name=first_name,last_name=last_name,email=email)
         Address.objects.create(user=user, street=street, brgy=brgy,cityprovince=cityprovince,zipcode=zipcode)
         # form = UserForm(request.POST)
         # if form.is_valid():
@@ -325,5 +326,19 @@ class ReportView(View):
         if not request.user.is_staff:
             user = request.user
             return render(request, 'report.html')
+        else:
+            return redirect("user_app:login_view")
+class OfferView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # custom_user = User.objects.get(id=user)
+            # consumer = Consumer.objects.get(custom_user=custom_user)
+            # consumer = custom_user.get_all_registered_consumer.all()
+            context = {
+                'user': user,
+            }
+            return render(request, 'Offers.html', context) #, context
         else:
             return redirect("user_app:login_view")

@@ -153,7 +153,7 @@
                     <li class="{% active '/home' 'active' %}"><a href="{% url 'user_app:home_view' %}">Home</a></li>
                     <li class="{% active '/product/search' 'active' %}"><a href="{% url 'user_app:search_product_view' %}">Search Product</a></li>
                     <li class="{% active '/product/add' 'active' %}"><a href="{% url 'user_app:add_product_view' %}">Add Product</a></li>
-                    <li><a href="cart.html">View Offers</a></li>
+                    <li><a href="{% url 'user_app:offer_view' %}">View Offers</a></li>
                     <li><a href="checkout.html">Cart</a></li>
                     <!-- <li><a href="checkout.html">Submit a report</a></li> -->
                 </ul>
