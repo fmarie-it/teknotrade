@@ -3,9 +3,6 @@
 
  
 {% block content %} 
-{% for report in reports %}
-{{report.name}}
-{{report.message}}
 
 <html>
     <head>
@@ -70,15 +67,17 @@
             <h1 class="heading">Reports Table</h1>
             <table class="table">
                 <thead>
+                    
+                    <th>email</th>
+                    <th>message</th>
+                    <tbody>
+
+                    {% for report in reports %}
+
                     <tr>
-                        <th>Name</th>
-                        <th>Message</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Name">John Philip</td>
-                        <td data-label="Message">Samson</td>
+                    <td data-label="Email">{{report.name}}</td>
+                    <td data-label="Message">{{report.message}}</td>
+                    {% endfor %}
                     </tr>
                 </tbody>
             </table>
@@ -86,5 +85,5 @@
     </body>
 </html>
 
-{% endfor %}
+
 {% endblock content %}

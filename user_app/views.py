@@ -328,35 +328,35 @@ class ReportView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            report = Report.objects.get(user=user)
-            context = {
-                'reports': report,
-            }
-            return render(request, 'report.html', context)
+            return render(request, 'report.html')
         else:
             return redirect("user_app:login_view")
 
-class OfferView(View):
-    
     def post(self,request):
-        # return render(request, 'Registration_page.html', context)
         email = request.POST.get('email')
         message = request.POST.get('message')
         user = request.user
         Report.objects.create(name=email,message=message,user=user)
         return redirect('user_app:report_view')
 
-class User_ReportView(View):
+class UserReportView(View):
 
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            report = Report.objects.get(user=user)
-            
+            report = user.get_all_users_report.all
             context = {
                 'reports': report,
             }
-            return render(request, 'report.html', context)
+            return render(request, 'user_report.html', context)
         else:
             return redirect("user_app:login_view")
 
+class OfferView(View):
+    
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            return redirect('user_app:offer_view')
+        else:
+            return redirect("user_app:login_view")
