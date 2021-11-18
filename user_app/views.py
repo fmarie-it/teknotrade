@@ -271,18 +271,16 @@ class GalleryView(View):
 
 class ProfileView(View):
 
-    def get(self, request):
-        if not request.user.is_staff:
-            user = request.user
-            # custom_user = User.objects.get(id=user)
-            # consumer = Consumer.objects.get(custom_user=custom_user)
-            # consumer = custom_user.get_all_registered_consumer.all()
-            context = {
-                'user': user,
-            }
-            return render(request, 'profile.html', context) #, context
-        else:
-            return redirect("user_app:login_view")
+    def get(self,request):
+        users = User.objects.all()
+        user = request.user
+        address = user.get_user_address.all
+        context ={
+            'users':user,
+            'addresses':address
+        }
+
+        return render(request, 'profile.html', context)
 
 
 class EditProfileView(View):
@@ -298,7 +296,6 @@ class EditProfileView(View):
         }
         return render(request, 'edit-profile.html', context)
     
-    # register user [1]
     def post(self,request):
         # return render(request, 'Registration_page.html', context)
         cid = request.POST.get("user-id")
@@ -337,7 +334,7 @@ class ReportView(View):
         message = request.POST.get('message')
         user = request.user
         Report.objects.create(name=email,message=message,user=user)
-        return redirect('user_app:report_view')
+        return redirect('user_app:offer_view')
 
 class UserReportView(View):
 
