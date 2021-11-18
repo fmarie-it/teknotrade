@@ -17,7 +17,7 @@
                   </div>
                   <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                      <form method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form">
+                      <form method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group mb-3">
                           <label
@@ -70,8 +70,8 @@
                         ></i>
                       </div>
                       <div class="custom-file mt-3 mb-3">
-                        <input name="images" id="fileInput" type="file" multiple class="btn btn-primary btn-block mx-auto"
-                        value="UPLOAD PRODUCT IMAGE" />
+                        <input name="images" id="fileInput" type="file" required class="btn btn-primary btn-block mx-auto"
+                        value="UPLOAD PRODUCT IMAGE" /> <!--multiple-->
                         <!-- <input
                           type="button"
                           class="btn btn-primary btn-block mx-auto"

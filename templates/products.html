@@ -88,7 +88,7 @@
                     <div class="single-product-wrapper">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <img src="{% static 'img/product1.jpg' %}" alt="">
+                            <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
                             <!-- Hover Thumb -->
                             <img class="hover-img" src="{% static 'img/product2.jpg' %}" alt="">
                         </div>

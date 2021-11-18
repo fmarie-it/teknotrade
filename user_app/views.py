@@ -3,7 +3,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.contrib.auth.models import Group, User #, auth
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib import messages
 from user_app.models import Product, Category
 # from .models import CustomUser
 from .forms import UserForm
@@ -173,28 +173,33 @@ class AddProductView(View):
             product_name = request.POST.get('product_name')
             description = request.POST.get('description')
             category = request.POST.get('category')
-            images = request.FILES.getlist('images')
+            # images = request.FILES.getlist('images')
             #Category.objects.filter(name=category)
 
-            if category is not None:
+            if len(request.FILES) != 0 and category is not None:
+                images = request.FILES.get('images')
                 categories = Category.objects.get(name=category)
 
-                for image in images:
-                    Product.objects.create(
-                        user=user,
-                        product_name=product_name,
-                        image=image,
-                        description=description,
-                        category=categories
-                    )
+                # for image in images:
+                #     product = Product.objects.create(
+                #         user=user,
+                #         product_name=product_name,
+                #         image=image,
+                #         description=description,
+                #         category=categories
+                #     )
+                # product.save()
 
-            Product.objects.create(
-                        user=user,
-                        product_name=product_name,
-                        image=images,
-                        description=description,
-                        category=categories
-                    )
+                product = Product.objects.create(
+                            user=user,
+                            product_name=product_name,
+                            image=images,
+                            description=description,
+                            category=categories
+                        )
+
+            product.save()
+            messages.success(request, "Product Added Successfully!")
 
             return redirect('user_app:search_product_view')
         else:
