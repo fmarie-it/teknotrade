@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group, User #, auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from user_app.models import Product, Category
+from user_app.models import Product, Category, Report
 # from .models import CustomUser
 from .forms import UserForm
 from .forms import AddressForm
@@ -324,27 +324,40 @@ class EditProfileView(View):
         # else:
         #     return HttpResponse(form.errors)
 
-
-
 class ReportView(View):
 
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            return render(request, 'report.html')
+            report = Report.objects.get(user=user)
+            context = {
+                'reports': report,
+            }
+            return render(request, 'report.html', context)
         else:
             return redirect("user_app:login_view")
+
 class OfferView(View):
+    
+    def post(self,request):
+        # return render(request, 'Registration_page.html', context)
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        user = request.user
+        Report.objects.create(name=email,message=message,user=user)
+        return redirect('user_app:report_view')
+
+class User_ReportView(View):
 
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            # custom_user = User.objects.get(id=user)
-            # consumer = Consumer.objects.get(custom_user=custom_user)
-            # consumer = custom_user.get_all_registered_consumer.all()
+            report = Report.objects.get(user=user)
+            
             context = {
-                'user': user,
+                'reports': report,
             }
-            return render(request, 'Offers.html', context) #, context
+            return render(request, 'report.html', context)
         else:
             return redirect("user_app:login_view")
+

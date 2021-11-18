@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Create your models here.
 
-# class CustomUser(models.Model):
+# class CustomUser(models.Model): gith
 #     user_id = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
 #     is_admin = models.BooleanField(default=False)
 #     # created_at = models.DateTimeField(default = timezone.now)
@@ -53,3 +53,10 @@ class Address(models.Model):
 	class Meta:
 		db_table = 'Address'
 
+class Report(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+    message = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='get_all_users_report')
+
+    class Meta:
+        db_table = "Report"
