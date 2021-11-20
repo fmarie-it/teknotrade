@@ -233,7 +233,7 @@ class SearchProductView(View):
         if not request.user.is_staff:
             user = request.user
             products = Product.objects.all()
-            product_category = products.filter(user=user)
+            # product_category = products.filter(user=user)
             # product_category = products.get_category.all()
             categories = Category.objects.all()
             # categories = Category.objects.get(id=product_category)
@@ -242,10 +242,18 @@ class SearchProductView(View):
             # custom_user = User.objects.get(id=user)
             # consumer = Consumer.objects.get(custom_user=custom_user)
             # consumer = custom_user.get_all_registered_consumer.all()
-            
+            # category = request.GET.get('category')
+            # if category == None:
+            #     product = Product.objects.filter(category=category)
+            # else:
+            #     product = Product.objects.filter(
+            #         name=categories.name, category=category)
+
+            # categories = Category.objects.filter(user=user.get_category.all)
 
             context = {
                 'products': products,
+                # 'product': product,
                 'categories': categories,
             }
             return render(request, 'products.html', context) #, context
