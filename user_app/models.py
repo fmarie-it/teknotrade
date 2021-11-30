@@ -26,6 +26,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     class Meta:
         verbose_name = 'Product'
@@ -36,7 +37,9 @@ class Product(models.Model):
     product_name = models.CharField(max_length=100, null=True, blank=True) #, null=False, blank=False
     image = models.ImageField(null=False, blank=False)
     description = models.TextField()
-    status = models.CharField(max_length=100, null=True, blank=True, default="In Stock")
+    status = models.CharField(max_length=100, null=True, blank=True, default="In Stock") # status: In Stock, Sold, Not Available/Inactive
+    admin_status =  models.CharField(max_length=100, null=True, blank=True, default="Pending") # status: Pending, Accepted, Denied
+    admin_remarks = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
     is_deleted = models.BooleanField(default=False)
     category = models.ForeignKey(
@@ -56,6 +59,7 @@ class Address(models.Model):
 	class Meta:
 		db_table = 'Address'
 
+
 class Report(models.Model):
     report_type = models.CharField(max_length=100, null=True, blank=True)
     message = models.TextField()
@@ -68,3 +72,12 @@ class Report(models.Model):
 
     class Meta:
         db_table = "Report"
+
+
+class Trade(models.Model):
+    receiver =  models.ForeignKey(User, on_delete=models.CASCADE, related_name='get_receiver')
+    product =  models.ForeignKey(Product, on_delete=models.CASCADE, related_name='get_receiver_product')
+    status = models.CharField(max_length=100, null=True, blank=True, default="pending") # status: to receive/pending, completed, cancelled
+
+    class Meta:
+        db_table = "Trade"
