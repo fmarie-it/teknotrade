@@ -54,9 +54,14 @@ class Address(models.Model):
 		db_table = 'Address'
 
 class Report(models.Model):
-    name = models.CharField(max_length=100, null=True, blank=True)
+    report_type = models.CharField(max_length=100, null=True, blank=True)
     message = models.TextField()
+    image = models.ImageField(null=True, blank=True)
+    status = models.CharField(max_length=100, null=True, blank=True, default="pending")
+    status_details = models.TextField()
+    date_created = models.DateTimeField(default = timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='get_all_users_report')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='get_all_product_report')
 
     class Meta:
         db_table = "Report"
