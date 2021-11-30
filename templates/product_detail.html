@@ -37,7 +37,7 @@
         padding: 0 7px !important;
         font-size: 20px;
         line-height: 56px;
-        background-color: #000;
+        background-color: #565656;
         font-weight: 400;
         text-align: center;
         vertical-align: middle;
@@ -45,7 +45,28 @@
     }
 
     .view-offer:hover{
-        background-color: #fbb710; /* Green */
+        background-color: #000; /* Green */
+        color: white;
+    }
+
+    .chat-user{
+        display: inline-block;
+        min-width: 55px;
+        height: 55px;
+        color: #ffffff;
+        border: none;
+        border-radius: 0;
+        padding: 0 7px !important;
+        font-size: 20px;
+        line-height: 56px;
+        background-color:#1ca700;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .chat-user:hover{
+        background-color: #000;
         color: white;
     }
 
@@ -165,6 +186,7 @@
                     <div class="cart-btn d-flex mb-50">
                         <a href="{% url 'user_app:offer_view' %}" class="btn amado-btn mb-15"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add Offer</a>
                         <a href="{% url 'user_app:offer_view' %}" class="view-offer" data-toggle="tooltip" data-placement="right" title="View Offers"><i class="bi bi-eye-fill"></i></a>
+                        <a href="{% url 'user_app:offer_view' %}" class="chat-user" data-toggle="tooltip" data-placement="right" title="Chat User"><i class="bi bi-messenger"></i></a>
                     </div>
 
                 </div>
