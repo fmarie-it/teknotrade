@@ -32,8 +32,7 @@ class Product(models.Model):
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
     
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE,  related_name='get_all_users_product') #null=True, blank=True
+    user = models.ForeignKey(User, on_delete=models.CASCADE,  related_name='get_all_users_product') #null=True, blank=True
     product_name = models.CharField(max_length=100, null=True, blank=True) #, null=False, blank=False
     image = models.ImageField(null=False, blank=False)
     description = models.TextField()
