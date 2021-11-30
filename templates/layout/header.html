@@ -22,6 +22,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+
+    <style>
+        /* Section Padding */
+        .section-padding-25-0 {
+        padding-top: 25px;
+        padding-bottom: 0px; }
+
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -101,7 +109,7 @@
 
 
     <!-- Search Wrapper Area Start -->
-    <div class="search-wrapper section-padding-100">
+    <div class="search-wrapper">
         <div class="search-close">
             <i class="fab fa-close" aria-hidden="true"></i>
             <i class="fa fa-close" aria-hidden="true"></i>
@@ -148,7 +156,7 @@
                 <a href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
             </div> -->
             <!-- Amado Nav -->
-            <nav class="amado-nav">
+            <nav class="amado-nav section-padding-25-0">
                 <ul>
                     <!-- <li class="{% active '/home' 'active' %}"><a href="{% url 'user_app:home_view' %}">Home</a></li> -->
                     <li class="{% active '/product/search' 'active' %}"><a href="{% url 'user_app:search_product_view' %}">Search Product</a></li>
