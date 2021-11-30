@@ -150,18 +150,20 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="{% active '/home' 'active' %}"><a href="{% url 'user_app:home_view' %}">Home</a></li>
+                    <!-- <li class="{% active '/home' 'active' %}"><a href="{% url 'user_app:home_view' %}">Home</a></li> -->
                     <li class="{% active '/product/search' 'active' %}"><a href="{% url 'user_app:search_product_view' %}">Search Product</a></li>
-                    <li class="{% active '/product/add' 'active' %}"><a href="{% url 'user_app:add_product_view' %}">Add Product</a></li>
-                    <li><a href="{% url 'user_app:offer_view' %}">View Offers</a></li>
-                    <li><a href="checkout.html">Cart</a></li>
+                    <li class="{% active '/product/search' 'active' %}"><a href="{% url 'user_app:search_product_view' %}">My Products</a></li>
+                    <li class="{% active '/my-offer' 'active' %}"><a href="{% url 'user_app:search_product_view' %}">My Offers</a></li>
+                    <!-- <li class="{% active '/product/add' 'active' %}"><a href="{% url 'user_app:add_product_view' %}">Add Product</a></li> -->
+                    <!-- <li><a href="{% url 'user_app:offer_view' %}">View Offers</a></li> -->
+                    <!-- <li><a href="checkout.html">Cart</a></li> -->
                     <!-- <li><a href="checkout.html">Submit a report</a></li> -->
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
                  <!--<a href="#" class="btn amado-btn mb-15 core-ignore">Discount</a>-->
-                <a href="{% url 'user_app:report_view' %}"  class="btn amado-btn active core-ignore">Submit a Report</a>
+                <!-- <a href="{% url 'user_app:report_view' %}"  class="btn amado-btn active core-ignore">Submit a Report</a> -->
                 <a href="{% url 'user_app:user_report_view' %}"  class="btn amado-btn active core-ignore">View Report</a>
             </div>
             <!-- Cart Menu -->

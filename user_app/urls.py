@@ -18,6 +18,7 @@ urlpatterns = [
     path('report',views.ReportView.as_view(), name="report_view"),
     path('user-report',views.UserReportView.as_view(), name="user_report_view"),
     path('product/offer',views.OfferView.as_view(), name="offer_view"),
+    path('my-offer',views.OfferView.as_view(), name="my-offer_view"),
     path('product/detail',views.ProductDetailView.as_view(), name="product_detail_view"),
     # path('overview',views.Overview.as_view(), name="overview_view"),
     # path('history',views.HistoryView.as_view(), name="history_view"),
