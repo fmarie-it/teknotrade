@@ -99,25 +99,17 @@
 </style>
 	<section class="contact">
 			<div class="contactForm">
-				<form>
+				<form method="POST" action="{% url 'user_app:report_view' %}"> 
+                    {% csrf_token %} 
 					<h2>Submit Report</h2>
-					<div class="inputBox">
-						<input type="text" name="required">
-						<span>First Name</span>
-				 	</div>
-
-                     <div class="inputBox">
-						<input type="text" name="required">
-						<span>Last Name</span>
-				 	</div>
-
+					
 				 	<div class="inputBox">
-						<input type="text" name="required">
+						<input type="text" name="email" required>
 						<span>Email</span>
 				 	</div>
 
 				 	<div class="inputBox">
-						<textarea required="required" cols="20" rows="5"></textarea>
+						<textarea name="message" cols="20" rows="5" required></textarea>
 						<span>Type your message</span>
                         
 				 	</div>

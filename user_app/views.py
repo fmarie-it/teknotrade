@@ -5,10 +5,9 @@ from django.contrib.auth.models import Group, User #, auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from user_app.models import Product, Category
+from user_app.models import Product, Category, Report
 # from .models import CustomUser
 from .forms import UserForm
-from .forms import AddressForm
 from django.contrib.auth.decorators import login_required
 from user_app.models import Address
 #import pyrebase
@@ -280,18 +279,16 @@ class GalleryView(View):
 
 class ProfileView(View):
 
-    def get(self, request):
-        if not request.user.is_staff:
-            user = request.user
-            # custom_user = User.objects.get(id=user)
-            # consumer = Consumer.objects.get(custom_user=custom_user)
-            # consumer = custom_user.get_all_registered_consumer.all()
-            context = {
-                'user': user,
-            }
-            return render(request, 'profile.html', context) #, context
-        else:
-            return redirect("user_app:login_view")
+    def get(self,request):
+        users = User.objects.all()
+        user = request.user
+        address = user.get_user_address.all
+        context ={
+            'users':user,
+            'addresses':address
+        }
+
+        return render(request, 'profile.html', context)
 
 
 class EditProfileView(View):
@@ -307,7 +304,6 @@ class EditProfileView(View):
         }
         return render(request, 'edit-profile.html', context)
     
-    # register user [1]
     def post(self,request):
         # return render(request, 'Registration_page.html', context)
         cid = request.POST.get("user-id")
@@ -332,8 +328,6 @@ class EditProfileView(View):
         # else:
         #     return HttpResponse(form.errors)
 
-
-
 class ReportView(View):
 
     def get(self, request):
@@ -342,17 +336,32 @@ class ReportView(View):
             return render(request, 'report.html')
         else:
             return redirect("user_app:login_view")
-class OfferView(View):
+
+    def post(self,request):
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        user = request.user
+        Report.objects.create(name=email,message=message,user=user)
+        return redirect('user_app:offer_view')
+
+class UserReportView(View):
 
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            # custom_user = User.objects.get(id=user)
-            # consumer = Consumer.objects.get(custom_user=custom_user)
-            # consumer = custom_user.get_all_registered_consumer.all()
+            report = user.get_all_users_report.all
             context = {
-                'user': user,
+                'reports': report,
             }
-            return render(request, 'Offers.html', context) #, context
+            return render(request, 'user_report.html', context)
+        else:
+            return redirect("user_app:login_view")
+
+class OfferView(View):
+    
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            return redirect('user_app:offer_view')
         else:
             return redirect("user_app:login_view")
