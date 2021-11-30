@@ -342,7 +342,7 @@ class ReportView(View):
         message = request.POST.get('message')
         user = request.user
         Report.objects.create(name=email,message=message,user=user)
-        return redirect('user_app:offer_view')
+        return redirect('user_app:user_report_view')
 
 class UserReportView(View):
 
@@ -362,6 +362,18 @@ class OfferView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            return redirect('user_app:offer_view')
+            return render(request, 'Offers.html')
+        else:
+            return redirect("user_app:login_view")
+
+class ProductDetailView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # context = {
+            #     'reports': report,
+            # }
+            return render(request, 'product_detail.html') #, context
         else:
             return redirect("user_app:login_view")

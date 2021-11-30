@@ -36,6 +36,9 @@ class Product(models.Model):
     product_name = models.CharField(max_length=100, null=True, blank=True) #, null=False, blank=False
     image = models.ImageField(null=False, blank=False)
     description = models.TextField()
+    status = models.CharField(max_length=100, null=True, blank=True, default="In Stock")
+    date_created = models.DateTimeField(default = timezone.now)
+    is_deleted = models.BooleanField(default=False)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE,  related_name='get_category')
 
@@ -58,7 +61,7 @@ class Report(models.Model):
     message = models.TextField()
     image = models.ImageField(null=True, blank=True)
     status = models.CharField(max_length=100, null=True, blank=True, default="pending")
-    status_details = models.TextField()
+    status_details = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default = timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='get_all_users_report')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='get_all_product_report')
