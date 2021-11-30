@@ -377,3 +377,32 @@ class ProductDetailView(View):
             return render(request, 'product_detail.html') #, context
         else:
             return redirect("user_app:login_view")
+
+class TradeView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # context = {
+            #     'reports': report,
+            # }
+            return render(request, 'trade_detail.html') #, context
+        else:
+            return redirect("user_app:login_view")
+
+class SearchMyProductView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            products = Product.objects.all()
+            categories = Category.objects.all()
+
+            context = {
+                'products': products,
+                # 'product': product,
+                'categories': categories,
+            }
+            return render(request, 'my-products.html', context) #, context
+        else:
+            return redirect("user_app:login_view")
