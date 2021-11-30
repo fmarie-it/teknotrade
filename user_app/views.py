@@ -406,3 +406,26 @@ class SearchMyProductView(View):
             return render(request, 'my-products.html', context) #, context
         else:
             return redirect("user_app:login_view")
+
+class AddUserView(View):
+    def get(self,request):
+        return render(request, 'add_newuser.html')
+    
+    # register user [1]
+    def post(self,request):
+        # return render(request, 'Registration_page.html', context)
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = request.user
+        User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
+        # form = UserForm(request.POST)
+        # if form.is_valid():
+        #     custom_user = form.save(commit=False)
+        #     custom_user.user_id = user
+        #     custom_user.save()     
+        return redirect('user_app:login_view')
+        # else:
+        #     return HttpResponse(form.errors)
