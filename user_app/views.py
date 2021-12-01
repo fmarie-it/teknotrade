@@ -395,12 +395,42 @@ class SearchMyProductView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            products = Product.objects.all()
-            categories = Category.objects.all()
+            products = user.get_all_users_product.all # Product.objects.all()
+            product = Product.objects.filter(user=user).values('category')
+            # products = Product.objects.filter(user=user).get(category=)
+            # for p in products:
+            #     print(p)
+            print(product)
+            # categ = Category.objects.filter(id=product)
+            # for c in categ:
+            #     categs = c.name
+            #     print(categs)
+            category = Category.objects.all() 
+            # for categ in product:
+            #     # get_name = categ.
+            #     print(categ)
+            # categ = Category.objects.filter(id=product).values('name') 
+            # print(categ)
+            # product_cat = product.filter(category=category.id)
+            # print(product_cat)
+            # categories = Category.objects.get(id=product_cat)
+            # categories = Category.category_set.all
+            # categories = user.cate
+            for cat in category:
+                categories = cat.get_category.all()
+                
+                print("Category:",categories)
+                # for cats in categories:
+                #     print(cats)
+            # products = Product.objects.get(category=cate)
+            # print(products)
+            # print(categories)
+            new = product.union(categories)
+            print(new)
 
             context = {
                 'products': products,
-                # 'product': product,
+                'product': product,
                 'categories': categories,
             }
             return render(request, 'my-products.html', context) #, context

@@ -27,6 +27,10 @@
             height: 500px;
             object-fit: cover;
         }
+
+        .add-product{
+            text-align: end;
+        }
     </style>
 
     <div class="shop_sidebar_area">
@@ -40,8 +44,8 @@
             <div class="catagories-menu">
                 <ul>
                     <li class="active"><a href="{% url 'user_app:search_product_view' %}">All</a></li>
-                    {% for category in product %}
-                    <li><a href="{% url 'user_app:search_product_view' %}?category={{category.category.name}}">{{category.category.name}}</a></li>
+                    {% for category in categories %}
+                    <li><a href="{% url 'user_app:search_myproduct_view' %}?category={{category.name}}">{{category.name}}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -65,9 +69,16 @@
         </div>
     </div>
 
-    <div class="amado_product_area section-padding-100">
+    <div class="amado_product_area section-padding-25-0">
         <div class="container-fluid">
-
+            <div class="row">
+                <div class="col-12">
+                    <div class="add-product">
+                        <a href="{% url 'user_app:add_product_view' %}" class="btn amado-btn mb-15"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add Product</a>
+                    </div>
+                </div>
+                
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="product-topbar d-xl-flex align-items-end justify-content-between">
