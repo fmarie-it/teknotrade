@@ -518,22 +518,14 @@ class AddOfferView(View):
         else:
             return HttpResponse('Invalid!') #form.errors
 
-        # context = {
-        #     'categories': categories,
-        # }
+class MyProductDetailView(View):
 
-        # return render(request, 'products.html', context)
-        # username = request.POST.get('username')
-        # first_name = request.POST.get('first_name')
-        # last_name = request.POST.get('last_name')
-        # email = request.POST.get('email')
-        # password = request.POST.get('password')
-        # User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
-        # # form = UserForm(request.POST)
-        # # if form.is_valid():
-        # #     custom_user = form.save(commit=False)
-        # #     custom_user.user_id = user
-        # #     custom_user.save()     
-        # return redirect('user_app:login_view')
-        # else:
-        #     return HttpResponse(form.errors)
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # context = {
+            #     'reports': report,
+            # }
+            return render(request, 'my-product_detail.html') #, context
+        else:
+            return redirect("user_app:login_view")
