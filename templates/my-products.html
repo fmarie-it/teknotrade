@@ -24,12 +24,16 @@
         }
 
         .single-product-wrapper .product-img img {
-            height: 500px;
+            height: 380px;
             object-fit: cover;
         }
 
         .add-product{
             text-align: end;
+        }
+
+        .product-padding{
+            padding: 0px 10px 10px 10px;
         }
     </style>
 
@@ -77,7 +81,6 @@
                         <a href="{% url 'user_app:add_product_view' %}" class="btn amado-btn mb-15"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add Product</a>
                     </div>
                 </div>
-                
             </div>
             <div class="row">
                 <div class="col-12">
@@ -131,7 +134,7 @@
                         </div>
 
                         <!-- Product Description -->
-                        <div class="product-description d-flex align-items-center justify-content-between">
+                        <div class="product-description d-flex align-items-center justify-content-between product-padding">
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
@@ -150,7 +153,7 @@
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 </div>
                                 <div class="cart">
-                                    <a href="{% url 'user_app:product_detail_view' %}" class="product"data-toggle="tooltip" data-placement="left" title="View Product"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="{% url 'user_app:myproduct_detail_view' %}" class="product"data-toggle="tooltip" data-placement="left" title="View Product"><i class="bi bi-eye-fill"></i></a>
                                 </div>
                             </div>
                         </div>

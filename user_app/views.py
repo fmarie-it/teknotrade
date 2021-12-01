@@ -459,3 +459,15 @@ class AddUserView(View):
         return redirect('user_app:login_view')
         # else:
         #     return HttpResponse(form.errors)
+
+class MyProductDetailView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            # context = {
+            #     'reports': report,
+            # }
+            return render(request, 'my-product_detail.html') #, context
+        else:
+            return redirect("user_app:login_view")

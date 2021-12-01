@@ -1,0 +1,215 @@
+{% extends "layout/main.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<style>
+    .profile {
+        border-radius: 50%;
+    }
+
+    .product-desc{
+        margin:0px;
+        width: 280px;
+        max-width: fit-content;
+    }
+
+    .product-meta-data a{
+        font-size: 25px;
+        margin-right: 0px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .product-meta-data a:hover{
+        color:#fbb710;
+    }
+
+    .report{
+        display: inline-block;
+        min-width: 50px;
+        height: 50px;
+        color: black;
+        padding: 0 7px !important;
+        font-size: 24px;
+        line-height: 56px;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .report:hover {
+        color: #fb3310;
+    }
+
+    .delete-product-btn{
+        display: inline-block;
+        min-width: 55px;
+        height: 55px;
+        color: #ffffff;
+        border: none;
+        border-radius: 0;
+        padding: 0 7px !important;
+        font-size: 20px;
+        line-height: 56px;
+        background-color: #dc0e0e;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        /* border-radius: 5px; */
+    }
+
+    .delete-product-btn:hover{
+        background-color: #000; /* Green */
+        color: white;
+    }
+
+    .edit-product-btn{
+        display: inline-block;
+        min-width: 55px;
+        height: 55px;
+        color: #ffffff;
+        border: none;
+        border-radius: 0;
+        padding: 0 7px !important;
+        font-size: 20px;
+        line-height: 56px;
+        background-color:#1ca700;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .edit-product-btn:hover{
+        background-color: #000;
+        color: white;
+    }
+
+    .main-content-wrapper .single-product-area .single_product_desc .product-meta-data .line {
+        width: 120px;
+        height: 3px;
+        background-color: #fbb710;
+        margin-top: 10px;
+        display: block;
+    }
+
+    .main-content-wrapper .single-product-area .single_product_desc .product-meta-data .product-price {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1;
+        margin-bottom: 10px;
+    }
+</style>
+<!-- Product Details Area Start -->
+<div class="single-product-area clearfix">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-50">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Furniture</a></li>
+                        <li class="breadcrumb-item"><a href="#">Chairs</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">white modern chair</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <div class="single_product_thumb">
+                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(/static/img/pro-big-1.jpg);">
+                            </li>
+                            <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(/static/img/pro-big-2.jpg);">
+                            </li>
+                            <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(/static/img/pro-big-3.jpg);">
+                            </li>
+                            <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(/static/img/pro-big-4.jpg);">
+                            </li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a class="gallery_img" href="{% static 'img/pro-big-1.jpg' %}">
+                                    <img class="d-block w-100" src="{% static 'img/pro-big-1.jpg' %}" alt="First slide">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a class="gallery_img" href="{% static 'img/pro-big-2.jpg' %}">
+                                    <img class="d-block w-100" src="{% static 'img/pro-big-2.jpg' %}" alt="Second slide">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a class="gallery_img" href="{% static 'img/pro-big-3.jpg' %}">
+                                    <img class="d-block w-100" src="{% static 'img/pro-big-3.jpg' %}" alt="Third slide">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a class="gallery_img" href="{% static 'img/pro-big-4.jpg' %}">
+                                    <img class="d-block w-100" src="{% static 'img/pro-big-4.jpg' %}" alt="Fourth slide">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5">
+                <div class="single_product_desc">
+                    <div class="mb-15 d-flex align-items-end justify-content-between"> 
+                        <a href="{% url 'user_app:profile_view' %}" data-toggle="tooltip" data-placement="right" title="View User Profile">
+                          <img src="{% static 'img/image1.jpg' %}" height="100" width="100" class="profile"/>
+                        </a>
+                    </div> 
+                    <!-- Product Meta Data -->
+                    <div class="product-meta-data">
+                        <div class="line"></div>
+                        <p class="product-price">Fatima Marie Montesclaros</p>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a href="product-details.html" class="product-desc">
+                                <h6>White Modern Chair</h6>
+                            </a>
+                            <a href="{% url 'user_app:offer_view' %}" data-toggle="tooltip" data-placement="right" title="Offers"><i class="bi bi-tags-fill"></i></a>
+                        </div>
+                        <!-- Ratings & Review -->
+                        <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="review">
+                                <a href="#">Review</a>
+                            </div>
+                        </div>
+                        <!-- Avaiable -->
+                        <p class="avaibility"><i class="fa fa-circle"></i> In Stock</p>
+                    </div>
+
+                    <div class="short_overview my-5">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                    </div>
+
+                    <!-- Add Product Form -->
+                    <form method="POST" action=""> <!--{'user_app:delete_product_view'}-->
+                        <div class="cart-btn d-flex mb-50">
+                            <a href="{% url 'user_app:add_product_view' %}" class="btn amado-btn mb-15"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add Product</a>
+                            <a href="{% url 'user_app:add_product_view' %}" class="edit-product-btn" data-toggle="tooltip" data-placement="right" title="Update"><i class="bi bi-pencil-square"></i></i></a>
+                            <a type="submit" name="delete-btn" href="{% url 'user_app:add_product_view' %}" class="delete-product-btn" data-toggle="tooltip" data-placement="right" title="Delete"><i class="bi bi-trash-fill"></i></i></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Details Area End -->
+
+{% endblock content %}
