@@ -14,12 +14,10 @@ class AdminDashboard(View):
             # invoice = Invoice.objects.all()
             # consumer = Consumer.objects.all()
 
-            # context = {
-            #     'admin': admin,
-            #     'invoice': invoice,
-            #     'consumer': consumer,
-            # }
-            return render(request, 'admin_dashboard.html') #, context
+            context = {
+                'full_name': user.first_name + " " + user.last_name,
+            }
+            return render(request, 'admin_dashboard.html', context)
         else:
             return redirect("user_app:login_view")
 
