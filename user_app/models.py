@@ -80,3 +80,18 @@ class Trade(models.Model):
 
     class Meta:
         db_table = "Trade"
+
+class Offer(models.Model):
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='get_users_offer') #null=True, blank=True
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='get_product_offer')
+    offer_name = models.CharField(max_length=100, null=True, blank=True) #, null=False, blank=False
+    image = models.ImageField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    status = models.CharField(max_length=100, null=True, blank=True, default="Pending") # status: Pending, accepted and rejected
+    date_created = models.DateTimeField(default = timezone.now)
+    is_deleted = models.BooleanField(default=False)
+
+
+    class Meta:
+        db_table = "Offer"
