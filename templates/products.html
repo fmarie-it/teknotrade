@@ -54,7 +54,7 @@
         <!-- ##### Single Widget ##### -->
         <div class="widget price mb-50">
             <!-- Widget Title -->
-            <h6 class="widget-title mb-30">Price</h6>
+            <h6 class="widget-title mb-30">Location</h6>
 
             <div class="widget-desc">
                 <div class="slider-range">
@@ -111,88 +111,60 @@
                 </div>
             </div>
 
-            <div class="row">
-                {% for product in products %}
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                    <div class="single-product-wrapper">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
-                            <!-- Hover Thumb -->
-                            <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt="">
-                        </div>
-
-                        <!-- Product Description -->
-                        <div class="product-description d-flex align-items-center justify-content-between product-padding">
-                            <!-- Product Meta Data -->
-                            <div class="product-meta-data">
-                                <div class="line"></div>
-                                <p class="product-price">2.3km</p>
-                                <a href="{% url 'user_app:product_detail_view'%}">
-                                    <h6>{{product.product_name}}</h6>
-                                </a>
+            <form method="POST" action="">
+                <div class="row">
+                    {% for product in products %}
+                    <!-- Single Product Area -->
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                        <div class="single-product-wrapper">
+                            <div id="divCheckbox" style="display: none;">
+                                <input
+                                name="product_id"
+                                type="text"
+                                value="{{product.id}}"/>
                             </div>
-                            <!-- Ratings & Cart -->
-                            <div class="ratings-cart text-right">
-                                <div class="ratings">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt="">
+                            </div>
+
+                            <!-- Product Description -->
+                            <div class="product-description d-flex align-items-center justify-content-between product-padding">
+                                <!-- Product Meta Data -->
+                                <div class="product-meta-data">
+                                    <div class="line"></div>
+                                    <p class="product-price">2.3km</p>
+                                    <a href="{% url 'user_app:product_detail_view'%}">
+                                        <h6>{{product.product_name}}</h6>
+                                    </a>
                                 </div>
-                                <div class="cart">
-                                    <a href="{% url 'user_app:product_detail_view' %}" class="product"data-toggle="tooltip" data-placement="left" title="View Product"><i class="bi bi-eye-fill"></i></a>
+                                <!-- Ratings & Cart -->
+                                <div class="ratings-cart text-right">
+                                    <div class="ratings">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="cart">
+                                        <a type="submit" href="{% url 'user_app:product_detail_view' %}" class="product"data-toggle="tooltip" data-placement="left" title="View Product"><i class="bi bi-eye-fill"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div>
+                            <div>
 
-                        </div>
-                    </div>
-                </div>
-                {% empty %}
-                    <h3>No photos...</h3>
-                {% endfor %}
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                    <div class="single-product-wrapper">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <img src="{% static 'img/product4.jpg' %}" alt="">
-                            <!-- Hover Thumb -->
-                            <img class="hover-img" src="{% static 'img/product5.jpg' %}" alt="">
-                        </div>
-
-                        <!-- Product Description -->
-                        <div class="product-description d-flex align-items-center justify-content-between">
-                            <!-- Product Meta Data -->
-                            <div class="product-meta-data">
-                                <div class="line"></div>
-                                <p class="product-price">$180</p>
-                                <a href="product-details.html">
-                                    <h6>Modern Chair</h6>
-                                </a>
-                            </div>
-                            <!-- Ratings & Cart -->
-                            <div class="ratings-cart text-right">
-                                <div class="ratings">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
-                                <div class="cart">
-                                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-                                </div>
                             </div>
                         </div>
                     </div>
+                    {% empty %}
+                        <h3>No photos...</h3>
+                    {% endfor %}
                 </div>
-            </div>
+            </form>
 
             <div class="row">
                 <div class="col-12">
