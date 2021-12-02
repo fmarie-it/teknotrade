@@ -103,10 +103,75 @@
                     {% csrf_token %} 
 					<h2>Submit Report</h2>
 					
-				 	<div class="inputBox">
-						<input type="text" name="email" required>
-						<span>Email</span>
-				 	</div>
+					<style>
+						/* Style The Dropdown Button */
+						.dropbtn {
+						  background-color: #4CAF50;
+						  color: white;
+						  padding: 16px;
+						  font-size: 16px;
+						  border: none;
+						  cursor: pointer;
+						}
+						
+						/* The container <div> - needed to position the dropdown content */
+						.dropdown {
+						  position: relative;
+						  display: inline-block;
+						}
+						
+						/* Dropdown Content (Hidden by Default) */
+						.dropdown-content {
+						  display: none;
+						  position: absolute;
+						  background-color: #f9f9f9;
+						  min-width: 160px;
+						  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+						  z-index: 1;
+						}
+						
+						/* Links inside the dropdown */
+						.dropdown-content a {
+						  color: black;
+						  padding: 12px 16px;
+						  text-decoration: none;
+						  display: block;
+						}
+						
+						/* Change color of dropdown links on hover */
+						.dropdown-content a:hover {background-color: #f1f1f1}
+						
+						/* Show the dropdown menu on hover */
+						.dropdown:hover .dropdown-content {
+						  display: block;
+						}
+						
+						/* Change the background color of the dropdown button when the dropdown content is shown */
+						.dropdown:hover .dropbtn {
+						  background-color: #3e8e41;
+						}
+						</style>
+						
+						<div class="form-group mb-3">
+							<label
+							  for="report"
+							  >Type of Report</label
+							>
+							<select
+							  class="custom-select tm-select-accounts"
+							  id="report"
+							  name="report"
+							  required
+							>
+							  <option disabled selected>Select Category</option>
+							  <!-- {% for category in categories %} -->
+							  <!-- {{category.name}} -->
+							  <option value="volvo">Defect Item</option>
+							  <option>Missing Item</option>
+							  <option>Report User</option>							  
+							  <!-- {% endfor %} -->
+							</select>
+						  </div>
 
 				 	<div class="inputBox">
 						<textarea name="message" cols="20" rows="5" required></textarea>
@@ -114,6 +179,11 @@
                         
 				 	</div>
 
+					<div class="custom-file mt-3 mb-3">
+                        <input name="images" id="fileInput" type="file" required class="btn btn-success btn-block mx-auto"
+                        value="UPLOAD REPORT IMAGE" /> 
+                    </div>
+					
 				 	<div class="inputBox">
 						<input type="submit" name="Submit Report" value="Submit">
 				 	</div>
@@ -123,3 +193,4 @@
 	</section>
 
 {% endblock content %}
+
