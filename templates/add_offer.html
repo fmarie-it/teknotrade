@@ -26,7 +26,7 @@
                           </label>
                           <input
                             id="name"
-                            name="product_name"
+                            name="offer_name"
                             type="text"
                             class="form-control validate"
                             required
@@ -40,26 +40,9 @@
                           <textarea
                             class="form-control validate"
                             name="description"
-                            rows="3"
+                            rows="6"
                             required
                           ></textarea>
-                        </div>
-                        <div class="form-group mb-3">
-                          <label
-                            for="category"
-                            >Category</label
-                          >
-                          <select
-                            class="custom-select tm-select-accounts"
-                            id="category"
-                            name="category"
-                            required
-                          >
-                            <option disabled selected>Select Category</option>
-                            {% for category in categories %}
-                            <option>{{category.name}}</option>
-                            {% endfor %}
-                          </select>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
@@ -71,13 +54,7 @@
                       </div>
                       <div class="custom-file mt-3 mb-3">
                         <input name="images" id="fileInput" type="file" required class="btn btn-primary btn-block mx-auto"
-                        value="UPLOAD PRODUCT IMAGE" /> <!--multiple-->
-                        <!-- <input
-                          type="button"
-                          class="btn btn-primary btn-block mx-auto"
-                          value="UPLOAD PRODUCT IMAGE"
-                          onclick="document.getElementById('fileInput').click();"
-                        /> -->
+                        value="UPLOAD PRODUCT IMAGE" />
                       </div>
                     </div>
                     <div class="col-12 mt-4">

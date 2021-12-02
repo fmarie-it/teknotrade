@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group, User #, auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from user_app.models import Product, Category, Report
+from user_app.models import Product, Category, Report, Offer
 # from .models import CustomUser
 from .forms import UserForm
 from django.contrib.auth.decorators import login_required
@@ -465,56 +465,35 @@ class AddOfferView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            categories = Category.objects.all()
-            # custom_user = User.objects.get(id=user)
-            # consumer = Consumer.objects.get(custom_user=custom_user)
-            # consumer = custom_user.get_all_registered_consumer.all()
 
-            context = {
-                'categories': categories,
-            }
-            return render(request, 'add_offer.html', context) #, context
+            # context = {
+            #     'categories': categories,
+            # }
+            return render(request, 'add_offer.html') #, context
         else:
             return redirect("user_app:login_view")
 
     def post(self,request):
         user = request.user
-        #categories = user.category_set.all()
-        # categories = None
 
         if request.method == 'POST':
-            product_name = request.POST.get('product_name')
+            offer_name = request.POST.get('offer_name')
             description = request.POST.get('description')
-            category = request.POST.get('category')
-            # images = request.FILES.getlist('images')
-            #Category.objects.filter(name=category)
+            images = request.FILES.get('images')
+            product = Product.objects.get(id=11)
 
-            if len(request.FILES) != 0 and category is not None:
-                images = request.FILES.get('images')
-                categories = Category.objects.get(name=category)
+            offer = Offer.objects.create(
+                        user=user,
+                        product = product,
+                        offer_name=offer_name,
+                        image=images,
+                        description=description,
+                    )
 
-                # for image in images:
-                #     product = Product.objects.create(
-                #         user=user,
-                #         product_name=product_name,
-                #         image=image,
-                #         description=description,
-                #         category=categories
-                #     )
-                # product.save()
+            offer.save()
+            messages.success(request, "Offer Added Successfully!")
 
-                product = Product.objects.create(
-                            user=user,
-                            product_name=product_name,
-                            image=images,
-                            description=description,
-                            category=categories
-                        )
-
-            product.save()
-            messages.success(request, "Product Added Successfully!")
-
-            return redirect('user_app:search_product_view')
+            return redirect('user_app:search_myproduct_view')
         else:
             return HttpResponse('Invalid!') #form.errors
 
