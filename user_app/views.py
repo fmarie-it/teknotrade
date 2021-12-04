@@ -10,6 +10,7 @@ from user_app.models import Product, Category, Report, Offer
 from .forms import UserForm
 from django.contrib.auth.decorators import login_required
 from user_app.models import Address
+from django.http import Http404
 #import pyrebase
 
 # Create your views here.
@@ -518,5 +519,26 @@ class AdminUserTableView(View):
             'users':user,
             'address':address
         }
-
         return render(request, 'admin_table.html', context)
+    def post(self,request):
+        if request == 'POST':
+            if 'btnUpdate' in request.POST:
+                cid = request.POST.get("user-id")
+                username = request.POST.get('username')
+                first_name = request.POST.get('first-name')
+                last_name = request.POST.get('last-name')
+                email = request.POST.get('email-address')
+                update = User.objects.filter(id = cid).update(username=username,first_name=first_name,last_name=last_name,email=email)
+                # form = UserForm(request.POST)
+                # if form.is_valid():
+                #     custom_user = form.save(commit=False)
+                #     custom_user.user_id = user
+                #     custom_user.save()   
+                print(update)  
+                return HttpResponseRedirect('user_app:admin-user-table')
+            elif 'btnDelete' in request.POST:
+                cid = request.POST.get("user-id")
+                user = User.objects.filter(id = cid).delete()
+                return HttpResponseRedirect('user_app:admin-user-table')
+        else:
+            return HttpResponseRedirect('user_app:admin-user-table')
