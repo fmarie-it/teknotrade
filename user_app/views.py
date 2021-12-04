@@ -456,7 +456,7 @@ class AddUserView(View):
         #     custom_user = form.save(commit=False)
         #     custom_user.user_id = user
         #     custom_user.save()     
-        return redirect('user_app:login_view')
+        return redirect('user_app:admin_table')
         # else:
         #     return HttpResponse(form.errors)
 
@@ -508,3 +508,15 @@ class MyProductDetailView(View):
             return render(request, 'my-product_detail.html') #, context
         else:
             return redirect("user_app:login_view")
+class AdminUserTableView(View):
+    def get(self,request):
+        user = User.objects.all()
+        address= Address.objects.all()
+
+
+        context ={
+            'users':user,
+            'address':address
+        }
+
+        return render(request, 'admin_table.html', context)

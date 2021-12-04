@@ -25,6 +25,7 @@ urlpatterns = [
     path('my-product/detail',views.MyProductDetailView.as_view(), name="myproduct_detail_view"),
     path('add-user',views.AddUserView.as_view(), name="add_new_user"),
     path('product/addoffer',views.AddOfferView.as_view(), name="add_offer_view"),
+    path('admin-user-table',views.AdminUserTableView.as_view(), name='admin_table')
     # path('overview',views.Overview.as_view(), name="overview_view"),
     # path('history',views.HistoryView.as_view(), name="history_view"),
     # path('pay-bills',views.PaybillsView.as_view(), name="pay_view"),
