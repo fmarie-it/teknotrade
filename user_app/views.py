@@ -13,6 +13,7 @@ from user_app.models import Address
 from django.http import Http404
 #import pyrebase
 
+
 # Create your views here.
 #config = {
 #    'apiKey': "AIzaSyCMEEQ4rALIOf5lX0YuCvXXFABPk1ZvLjg",
@@ -509,25 +510,23 @@ class MyProductDetailView(View):
             return render(request, 'my-product_detail.html') #, context
         else:
             return redirect("user_app:login_view")
+
 class AdminUserTableView(View):
     def get(self,request):
         user = User.objects.all()
-        address= Address.objects.all()
-
-
         context ={
-            'users':user,
-            'address':address
-        }
+            'users':user,   
+        }   
         return render(request, 'admin_table.html', context)
     def post(self,request):
-        if request == 'POST':
+        if request.method == 'POST':
             if 'btnUpdate' in request.POST:
+                print('update button clicked')
                 cid = request.POST.get("user-id")
                 username = request.POST.get('username')
-                first_name = request.POST.get('first-name')
-                last_name = request.POST.get('last-name')
-                email = request.POST.get('email-address')
+                first_name = request.POST.get('firstname')
+                last_name = request.POST.get('lastname')
+                email = request.POST.get('email')
                 update = User.objects.filter(id = cid).update(username=username,first_name=first_name,last_name=last_name,email=email)
                 # form = UserForm(request.POST)
                 # if form.is_valid():
@@ -535,10 +534,15 @@ class AdminUserTableView(View):
                 #     custom_user.user_id = user
                 #     custom_user.save()   
                 print(update)  
-                return HttpResponseRedirect('user_app:admin-user-table')
+                print("updated")  
+                return redirect("user_app:admin_table")
             elif 'btnDelete' in request.POST:
                 cid = request.POST.get("user-id")
                 user = User.objects.filter(id = cid).delete()
-                return HttpResponseRedirect('user_app:admin-user-table')
-        else:
-            return HttpResponseRedirect('user_app:admin-user-table')
+                print('recorded deleted')
+                return redirect("user_app:admin_table")
+                
+
+    
+        return HttpResponse('not valid')
+        
