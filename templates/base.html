@@ -1,0 +1,417 @@
+{% load static %}
+{% load extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>TeknoTrade | Home</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <style>
+        /* Section Padding */
+        .section-padding-25-0 {
+        padding-top: 25px;
+        padding-bottom: 25px; }
+
+        .modal-mg{
+            margin-top: 85px;
+            margin-bottom: -50px;
+            max-height: 100%;
+            height: 650px;
+            padding: 0px;
+        }
+
+        .modal-center{
+            margin-right: auto;
+            margin-left: auto;
+            /* overflow: visible; */
+        }
+
+        .modal-img{
+            margin-top: 10px;
+            width: 50%; 
+            height: auto;
+        }
+
+        .modal-bg{
+            background-color: #666;
+        }
+
+        .tc-white{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 2000;">
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand nav-link core-ignore" href="{% url 'user_app:home_view' %}">
+                <strong>TT | TeknoTrade</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fab fa-bars"></i>
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                <li class="nav-item {% active '/home' 'active' %}">
+                    <a class="nav-link highlight" aria-current="page" href="{% url 'user_app:home_view' %}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle highlight" id="userPortalsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                        User Portals
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userPortalsDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'user_app:profile_view' %}">Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/establishments-login">Establishment Portal</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link highlight" href="{% url 'user_app:about_view' %}">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link highlight" href="{% url 'user_app:contact_view' %}">Contact us</a>
+                </li>
+            </ul>
+
+            <!-- <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <br> -->
+
+            <ul class="navbar-nav d-flex flex-row">
+                <!-- Icons -->
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link user-profile" href="{% url 'user_app:profile_view' %}" rel="nofollow" >
+                        <i class="fa fa-user-circle"></i>
+                    </a>
+                </li>
+                <!-- <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#" rel="nofollow" >
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="#" rel="nofollow">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href=https://github.com/fmarie-it/teknotrade rel="nofollow" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li> -->
+            </ul>
+            
+            <div class="navbar-nav d-flex flex-row ml-3">
+                <a class="btn btn-sm btn-outline-light core-ignore" href="{% url 'user_app:logout_view' %}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+
+    <!-- Search Wrapper Area Start -->
+    <div class="search-wrapper">
+        <div class="search-close">
+            <i class="fab fa-close" aria-hidden="true"></i>
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-content">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                            <button type="submit"><img src="{% static 'img/search.png' %}" alt=""></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Wrapper Area End -->
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Header Area Start -->
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fab fa-close" aria-hidden="true"></i>
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <!-- <div class="logo">
+                <a href="index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+            </div> -->
+            <!-- Amado Nav -->
+            <nav class="amado-nav section-padding-25-0">
+                <ul>
+                    <!-- <li class="{% active '/home' 'active' %}"><a href="{% url 'user_app:home_view' %}">Home</a></li> -->
+                    <li class="{% active '/product/search' 'active' %}"><a href="{% url 'user_app:search_product_view' %}">Search Product</a></li>
+                    <li class="{% active '/my-product/search' 'active' %}"><a href="{% url 'user_app:search_myproduct_view' %}">My Products</a></li>
+                    <li class="{% active '/my-offer' 'active' %}"><a href="{% url 'user_app:my-offer_view' %}">My Offers</a></li>
+                    <li class="{% active '/my-trade' 'active' %}"><a href="{% url 'user_app:trade_view' %}">My Trade</a></li>
+                    <!-- <li class="{% active '/product/add' 'active' %}"><a href="{% url 'user_app:add_product_view' %}">Add Product</a></li> -->
+                    <!-- <li><a href="{% url 'user_app:offer_view' %}">View Offers</a></li> -->
+                    <!-- <li><a href="checkout.html">Cart</a></li> -->
+                    <!-- <li><a href="checkout.html">Submit a report</a></li> -->
+                </ul>
+            </nav>
+            <!-- Button Group -->
+            <div class="amado-btn-group mt-30 mb-100">
+                 <!--<a href="#" class="btn amado-btn mb-15 core-ignore">Discount</a>-->
+                <!-- <a href="{% url 'user_app:report_view' %}"  class="btn amado-btn active core-ignore">Submit a Report</a> -->
+                <a href="{% url 'user_app:user_report_view' %}"  class="btn amado-btn active core-ignore">View Report</a>
+            </div>
+            <!-- Cart Menu -->
+            <div class="cart-fav-search mb-100">
+                <a href="cart.html" class="cart-nav"><i class="fas fa-shopping-cart mr-2"></i> Cart <span class="text-dark">(0)</span></a>
+                <a href="#" class="fav-nav"><i class="fas fa-star mr-2"></i> Favourite</a>
+                <a href="#" class="search-nav" style="margin-left: 2px"><i class="fas fa-search mr-2"></i> Search</a>
+            </div>
+        </header>
+        <!-- Header Area End -->
+        
+        {% block content %}
+        {% endblock content %}
+    
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+
+    <!-- ##### Newsletter Area Start ##### -->
+    <!-- <section class="newsletter-area section-padding-100-0">
+        <div class="container">
+            <div class="row align-items-center"> -->
+                <!-- Newsletter Text -->
+                <!-- <div class="col-12 col-lg-6 col-xl-7">
+                    <div class="newsletter-text mb-100">
+                        <h2>Subscribe for a <span>25% Discount</span></h2>
+                        <p>Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
+                    </div>
+                </div> -->
+                <!-- Newsletter Form -->
+                <!-- <div class="col-12 col-lg-6 col-xl-5">
+                    <div class="newsletter-form mb-100">
+                        <form action="#" method="post">
+                            <input type="email" name="email" class="nl-email" placeholder="Your E-mail">
+                            <input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- ##### Newsletter Area End ##### -->
+    
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer_area clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-4">
+                    <div class="single_widget_area">
+                        <!-- Logo -->
+                        <div class="footer-logo mr-50">
+                            <a href="index.html"><img src="{% static 'img/logo2.png' %}" alt=""></a>
+                        </div>
+                        <!-- Copywrite Text -->
+                        <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This is made with <i class="far fa-heart" aria-hidden="true"></i> by <a class="m-0 p-0" href="#" target="_blank">The Irregulars</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        <p class="copywrite">Powered by<br>
+                            <a href="https://www.python.org/"
+                                class="btn btn-dark mr-1"
+                                role="button"
+                                rel="nofollow"
+                                target="_blank">
+                            <i class="fab fa-python fa-2x"></i>
+                            </a>
+                            <a
+                                href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+                                class="btn btn-warning m-1"
+                                role="button"
+                                rel="nofollow"
+                                target="_blank"
+                            >
+                            <i class="fab fa-html5 fa-2x"></i>
+                            </a>
+                            <a 
+                            href="https://www.w3schools.com/css/css_intro.asp"
+                            role="button"
+                            rel="nofollow"
+                            class="btn btn-success m-1"
+                            target="_blank"
+                            >
+                            <i class="fab fa-css3-alt fa-2x"></i>
+                            </a>
+                            <a
+                                href="https://getbootstrap.com/docs/5.0/getting-started/introduction/"
+                                class="btn btn-danger m-1"
+                                role="button"
+                                rel="nofollow"
+                                target="_blank"
+                            >
+                            <i class="fab fa-bootstrap fa-2x"></i>
+                            </a>
+                            <a
+                                href="https://www.djangoproject.com/"
+                                class="btn btn-primary m-1"
+                                role="button"
+                                rel="nofollow"
+                                target="_blank"
+                            >
+                            <i class="fas fa-database fa-2x"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Single Widget Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="single_widget_area">
+                        <!-- Footer Menu -->
+                        <div class="footer_menu">
+                            <nav class="navbar navbar-expand-lg justify-content-end">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+                                <div class="collapse navbar-collapse" id="footerNavContent">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item {% active '/home' 'active' %}">
+                                            <a class="nav-link" href="{% url 'user_app:home_view' %}">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="shop.html">Shop</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="product-details.html">Product</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="cart.html">Cart</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="checkout.html">Checkout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Plugins js -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+
+    <!-- Edit Product Modal -->
+    <div class="modal fade modal-mg" id="EditModal-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content w-75 modal-center tm-bg-primary-dark tm-block tm-block-h-auto tc-white">
+            <div class="modal-header">
+                <h5 class="modal-title tc-white">Product Details</h5>
+                <button type="button" class="close tc-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="updateForm" method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form " enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="modal-body">
+                <label>Product ID</label>
+                <input type="text" name="product-id" value = {{product.id}} disabled><br>
+                <div class="mt-1">
+                    <label for="name">Product Name</label>
+                    <input id="name" name="product_name" type="text" class="form-control validate" value ={{product.product_name}} >
+                </div>
+                <div class="mt-1">
+                    <label for="description">Description</label>
+                    <textarea class="form-control validate" name="description" rows="3" value ={{product.description}}>{{product.description}}</textarea>
+                </div>
+                <div class="mt-1">
+                    <label for="category">Category</label>
+                    <select class="custom-select tm-select-accounts" id="category" name="category">
+                        <option disabled selected>{{product.category}}</option>
+                        {% for category in categories %}
+                        <option>{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- Product Image -->
+                <div class="product-img modal-img">
+                    <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
+                    <!-- Hover Thumb -->
+                    <!-- <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt=""> -->
+                </div>
+                <div class="custom-file mt-3 mb-3">
+                    <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto"
+                    value ={{product.image}} /> <!--multiple-->
+                </div>
+                <!-- <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="btn btn-primary btn-block mx-aut" type="file" id="formFile">
+                </div> -->
+                <!-- <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-primary">UPDATE</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    <!-- End of Edit Product Modal -->
+</body>
+</html>
