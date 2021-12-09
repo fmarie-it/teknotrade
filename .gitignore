@@ -141,3 +141,6 @@ cython_debug/
 *.pyc
 *.pyc
 *.pyc
+
+# Migration file excluding init
+0*.py
