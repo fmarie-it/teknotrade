@@ -9,6 +9,7 @@ urlpatterns = [
     path('product',views.ListProductView.as_view(), name="list_product_view"),
     path('product/request',views.ProductRequestView.as_view(), name="product_request_view"),
     path('product/request/<int:id>/',views.ProductRequestView.as_view(), name="update_product_request_view"),
+    path('admin-user-table',views.AdminUserTableView.as_view(), name='admin_table'),
     # path('invoices',views.InvoiceView.as_view(), name="invoice_view"),
     # path('queries',views.QueriesView.as_view(), name="queries_view"),
     # path('billing',views.BillingView.as_view(), name="billing_view"),

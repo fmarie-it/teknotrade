@@ -25,7 +25,6 @@ urlpatterns = [
     path('my-product/detail/<str:pk>',views.MyProductDetailView.as_view(), name="myproduct_detail_view"),
     path('add-user',views.AddUserView.as_view(), name="add_new_user"),
     path('product/addoffer',views.AddOfferView.as_view(), name="add_offer_view"),
-    path('admin-user-table',views.AdminUserTableView.as_view(), name='admin_table'),
     path('product/edit',views.EditProductView.as_view(), name="edit_product_view"),
     # path('overview',views.Overview.as_view(), name="overview_view"),
     # path('history',views.HistoryView.as_view(), name="history_view"),

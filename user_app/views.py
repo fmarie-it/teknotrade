@@ -517,40 +517,6 @@ class MyProductDetailView(View):
         else:
             return redirect("user_app:login_view")
 
-class AdminUserTableView(View):
-    def get(self,request):
-        user = User.objects.all()
-        context ={
-            'users':user,   
-        }   
-        return render(request, 'admin_table.html', context)
-    def post(self,request):
-        if request.method == 'POST':
-            if 'btnUpdate' in request.POST:
-                print('update button clicked')
-                cid = request.POST.get("user-id")
-                username = request.POST.get('username')
-                first_name = request.POST.get('firstname')
-                last_name = request.POST.get('lastname')
-                email = request.POST.get('email')
-                update = User.objects.filter(id = cid).update(username=username,first_name=first_name,last_name=last_name,email=email)
-                # form = UserForm(request.POST)
-                # if form.is_valid():
-                #     custom_user = form.save(commit=False)
-                #     custom_user.user_id = user
-                #     custom_user.save()   
-                print(update)  
-                print("updated")  
-                return redirect("user_app:admin_table")
-            elif 'btnDelete' in request.POST:
-                cid = request.POST.get("user-id")
-                user = User.objects.filter(id = cid).delete()
-                print('recorded deleted')
-                return redirect("user_app:admin_table")
-                
-
-    
-        return HttpResponse('not valid')
         
 class EditProductView(View):
 
