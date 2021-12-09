@@ -124,36 +124,19 @@
                     <div class="single_product_thumb">
                         <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
-                                <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(/static/img/pro-big-1.jpg);">
+                                {% if product.image %}
+                                <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url({{product.image.url}});">
                                 </li>
-                                <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(/static/img/pro-big-2.jpg);">
-                                </li>
-                                <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(/static/img/pro-big-3.jpg);">
-                                </li>
-                                <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(/static/img/pro-big-4.jpg);">
-                                </li>
+                                {% endif %}
                             </ol>
                             <div class="carousel-inner">
+                                {% if product.image %}
                                 <div class="carousel-item active">
-                                    <a class="gallery_img" href="{% static 'img/pro-big-1.jpg' %}">
-                                        <img class="d-block w-100" src="{% static 'img/pro-big-1.jpg' %}" alt="First slide">
+                                    <a class="gallery_img" href="{{product.image.url}}">
+                                        <img class="d-block w-100" src="{{product.image.url}}" alt="First slide">
                                     </a>
                                 </div>
-                                <div class="carousel-item">
-                                    <a class="gallery_img" href="{% static 'img/pro-big-2.jpg' %}">
-                                        <img class="d-block w-100" src="{% static 'img/pro-big-2.jpg' %}" alt="Second slide">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a class="gallery_img" href="{% static 'img/pro-big-3.jpg' %}">
-                                        <img class="d-block w-100" src="{% static 'img/pro-big-3.jpg' %}" alt="Third slide">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a class="gallery_img" href="{% static 'img/pro-big-4.jpg' %}">
-                                        <img class="d-block w-100" src="{% static 'img/pro-big-4.jpg' %}" alt="Fourth slide">
-                                    </a>
-                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -171,7 +154,7 @@
                             <!-- <p class="product-price">Fatima Marie Montesclaros</p> -->
                             <div class="d-flex align-items-center justify-content-between">
                                 <a href="product-details.html" class="product-desc">
-                                    <h6>White Modern Chair</h6>
+                                    <h6>{{product.product_name}}</h6>
                                 </a>
                                 <a href="{% url 'user_app:offer_view' %}" data-toggle="tooltip" data-placement="right" title="Offers"><i class="bi bi-tags-fill"></i></a>
                             </div>
@@ -193,17 +176,14 @@
                         </div>
 
                         <div class="short_overview my-5">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                            <p>{{product.description}} <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
                         </div>
 
-                        <!-- Add Product Form -->
+                        <!-- Product Button Control -->
                         <!-- <form method="POST" action=""> {'user_app:delete_product_view'} -->
                         <div class="cart-btn d-flex mb-50">
-                            <a href="{% url 'user_app:add_product_view' %}" class="btn amado-btn mb-15"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add Product</a>
+                            <a type="button" class="btn amado-btn mb-15" data-toggle="modal" data-target="#AddModal"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add Product</a>
                             <a type="button" class="edit-product-btn" title="Update" data-toggle="modal" data-target="#EditModal-{{product.id}}"><i class="bi bi-pencil-square"></i></i></a> <!--data-toggle="tooltip" data-placement="right"-->
-                            <!--<button type="button" class="edit-product-btn" data-bs-toggle="modal" data-bs-target="#EditModal-{{product.id}}">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>-->
                             <a type="submit" name="delete-btn" href="{% url 'user_app:add_product_view' %}" class="delete-product-btn" data-toggle="tooltip" data-placement="right" title="Delete"><i class="bi bi-trash-fill"></i></i></a>
                         </div>
                         <!-- </form> -->
@@ -218,23 +198,23 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form id="updateForm" method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form " enctype="multipart/form-data">
+                                <form id="updateForm" method="POST" action="{% url 'user_app:edit_product_view' %}" class="tm-edit-product-form " enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="modal-body">
                                     <label>Product ID</label>
-                                    <input type="text" name="product-id" value = {{product.id}} disabled><br>
+                                    <input type="text" name="product_id" value ="{{product.id}}"><br>
                                     <div class="mt-2">
                                         <label for="name">Product Name</label>
-                                        <input id="name" name="product_name" type="text" class="form-control validate" value ={{product.product_name}} >
+                                        <input id="name" name="product_name" type="text" class="form-control validate" value ="{{product.product_name}}" >
                                     </div>
                                     <div class="mt-2">
                                         <label for="description">Description</label>
-                                        <textarea class="form-control validate" name="description" rows="3" value ={{product.description}}>{{product.description}}</textarea>
+                                        <textarea class="form-control validate" name="description" rows="3" value ="{{product.description}}">{{product.description}}</textarea>
                                     </div>
                                     <div class="mt-2">
                                         <label for="category">Category</label>
-                                        <select class="custom-select tm-select-accounts" id="category" name="category">
-                                            <option disabled selected>{{product.category}}</option>
+                                        <select class="custom-select tm-select-accounts" id="category" name="category" value="{{product.category}}">
+                                            <option disabled selected value="{{product.category}}">{{product.category}}</option>
                                             {% for category in categories %}
                                             <option>{{category.name}}</option>
                                             {% endfor %}
@@ -247,8 +227,7 @@
                                         <!-- <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt=""> -->
                                     </div>
                                     <div class="custom-file mt-3 mb-3">
-                                        <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto"
-                                        value ={{product.image}} /> <!--multiple-->
+                                        <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto" value="{{product.image}}"/> <!--multiple-->
                                     </div>
                                     <!-- <div class="mb-3">
                                         <label for="formFile" class="form-label">Default file input example</label>
@@ -260,7 +239,7 @@
                                     </div> -->
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-primary">UPDATE</button>
+                                    <button type="submit" id = "btnUpdate" name = "updateProduct" class="btn btn-primary">UPDATE</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
                                 </div>
                                 </form>
@@ -269,6 +248,63 @@
                         </div>
                         <!-- End of Edit Product Modal -->
 
+                        <!-- Add Product Modal -->
+                        <div class="modal fade modal-mg" data-backdrop="false" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content w-75 modal-center tm-bg-primary-dark tm-block tm-block-h-auto tc-white">
+                                <div class="modal-header">
+                                    <h5 class="modal-title tc-white">Product Details</h5>
+                                    <button type="button" class="close tc-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="updateForm" method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form " enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="mt-2">
+                                        <label for="name">Product Name</label>
+                                        <input id="name" name="product_name" type="text" class="form-control validate" required>
+                                    </div>
+                                    <div class="mt-2">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control validate" name="description" rows="3" required></textarea>
+                                    </div>
+                                    <div class="mt-2">
+                                        <label for="category">Category</label>
+                                        <select class="custom-select tm-select-accounts" id="category" name="category" required>
+                                            <option disabled selected>Select Category</option>
+                                            {% for category in categories %}
+                                            <option>{{category.name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <!-- Product Image -->
+                                    <!-- <div class="modal-img" >
+                                        <img src="{{product.image.url}}" alt=""> {% static 'img/product1.jpg' %} -->
+                                        <!-- Hover Thumb -->
+                                        <!-- <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt=""> -->
+                                    <!-- </div> -->
+                                    <div class="custom-file mt-3 mb-3">
+                                        <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto" required> <!--multiple-->
+                                    </div>
+                                    <!-- <div class="mb-3">
+                                        <label for="formFile" class="form-label">Default file input example</label>
+                                        <input class="btn btn-primary btn-block mx-aut" type="file" id="formFile">
+                                    </div> -->
+                                    <!-- <div class="mb-3">
+                                        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                    </div> -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                    <input type="submit" class="btn btn-primary" value="ADD">
+                                </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- End of Add Product Modal -->
                     </div>
                 </div>
             </div>

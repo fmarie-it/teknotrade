@@ -163,7 +163,7 @@ class AddProductView(View):
             context = {
                 'categories': categories,
             }
-            return render(request, 'add_product.html', context) #, context
+            return render(request, 'my-product_detail.html', context) #, context
         else:
             return redirect("user_app:login_view")
 
@@ -370,13 +370,16 @@ class OfferView(View):
 
 class ProductDetailView(View):
 
-    def get(self, request):
+    def get(self, request): # , pk
         if not request.user.is_staff:
             user = request.user
-            # context = {
-            #     'reports': report,
-            # }
-            return render(request, 'product_detail.html') #, context
+            product = Product.objects.all() # get(id=pk)
+            categories = Category.objects.all()
+            context = {
+                'product': product,
+                'categories': categories,
+            }
+            return render(request, 'product_detail.html', context) #, context
         else:
             return redirect("user_app:login_view")
 
@@ -501,10 +504,10 @@ class AddOfferView(View):
 
 class MyProductDetailView(View):
 
-    def get(self, request):
+    def get(self, request,pk):
         if not request.user.is_staff:
             user = request.user
-            product = Product.objects.first()
+            product = Product.objects.get(id=pk)
             categories = Category.objects.all()
             context = {
                 'product': product,
@@ -554,53 +557,48 @@ class EditProductView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
+            product = Product.objects.first()
             categories = Category.objects.all()
+            context = {
+                'product': product,
+                'categories': categories,
+            }
             # custom_user = User.objects.get(id=user)
             # consumer = Consumer.objects.get(custom_user=custom_user)
             # consumer = custom_user.get_all_registered_consumer.all()
 
-            context = {
-                'categories': categories,
-            }
-            return render(request, 'edit_product.html', context) #, context
+            return render(request, 'my-product_detail.html', context) #, context
         else:
             return redirect("user_app:login_view")
 
     def post(self,request):
-        user = request.user
-        #categories = user.category_set.all()
-        # categories = None
-
         if request.method == 'POST':
+            # if 'updateProduct' in request.POST:
+            product_id = request.POST.get('product_id')
             product_name = request.POST.get('product_name')
             description = request.POST.get('description')
             category = request.POST.get('category')
             # images = request.FILES.getlist('images')
             #Category.objects.filter(name=category)
 
-            if len(request.FILES) != 0 and category is not None:
-                images = request.FILES.get('images')
-                categories = Category.objects.get(name=category)
+            # if len(request.FILES) != 0 and category is not None:
+            images = request.FILES.get('images')
+            categories = Category.objects.get(name=category)
+            print(categories.id)
 
-                # for image in images:
-                #     product = Product.objects.create(
-                #         user=user,
-                #         product_name=product_name,
-                #         image=image,
-                #         description=description,
-                #         category=categories
-                #     )
-                # product.save()
-
-                product = Product.objects.create(
-                            user=user,
-                            product_name=product_name,
-                            image=images,
-                            description=description,
-                            category=categories
-                        )
-
-            product.save()
+            product = Product.objects.filter(id=product_id).update(
+                        product_name=product_name,
+                        image=images,
+                        description=description,
+                        category=categories.id
+                    )
+                
+            print(product)
+            print(product_id)
+            print(product_name)  
+            print(images)
+            print(description)
+            print("updated")
             messages.success(request, "Product Added Successfully!")
 
             return redirect('user_app:search_product_view')
