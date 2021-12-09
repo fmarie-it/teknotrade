@@ -102,8 +102,6 @@
     }
 </style>
     
-</head>
-<body>
     <!-- Product Details Area Start -->
     <div class="single-product-area clearfix">
         <div class="container-fluid">
@@ -210,55 +208,46 @@
                         </div>
                         <!-- </form> -->
                         
-                        <!-- The Modal Edit -->
-                        <div class="modal fade" id="Modal-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="  EditModalLabel" aria-hidden="true">
+                        <!-- Edit Product Modal -->
+                        <div class="modal fade modal-mg" data-backdrop="false" id="EditModal-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header"style="background-color:powderblue;">
-                                    <h5 class="modal-title" >Product Details</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <div class="modal-content w-75 modal-center tm-bg-primary-dark tm-block tm-block-h-auto tc-white">
+                                <div class="modal-header">
+                                    <h5 class="modal-title tc-white">Product Details</h5>
+                                    <button type="button" class="close tc-white" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form id="updateForm" method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form" enctype="multipart/form-data">
+                                <form id="updateForm" method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form " enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="modal-body">
-                                <label>Product ID</label>
-                                <input type="number" name="product-id" value = {{product.id}} ><br>
-                                <div class="form-group mb-3">
-                                    <label for="name">Product Name</label>
-                                    <input id="name" name="product_name" type="text" class="form-control validate" value ={{product.product_name}} >
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="description">Description</label>
-                                    <textarea class="form-control validate" name="description" rows="3" value ={{product.description}}>{{product.description}}</textarea>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="category">Category</label>
-                                    <select class="custom-select tm-select-accounts" id="category" name="category" value ={{product.category}}>
-                                        <option disabled selected>{{product.category}}</option>
-                                        {% for category in categories %}
-                                        <option>{{category.name}}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <!-- <div class="tm-product-img-dummy mx-auto">
-                                    <i
-                                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                                    onclick="document.getElementById('fileInput').click();"
-                                    ></i>
-                                </div> -->
-                                <!-- Product Image -->
-                                <div class="product-img" style="width: 50%; height: auto;">
-                                    <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
-                                    <!-- Hover Thumb -->
-                                    <!-- <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt=""> -->
-                                </div>
-                                <div class="custom-file mt-3 mb-3">
-                                    <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto"
-                                    value ={{product.image}} /> <!--multiple-->
-                                </div>
-                                
+                                    <label>Product ID</label>
+                                    <input type="text" name="product-id" value = {{product.id}} disabled><br>
+                                    <div class="mt-1">
+                                        <label for="name">Product Name</label>
+                                        <input id="name" name="product_name" type="text" class="form-control validate" value ={{product.product_name}} >
+                                    </div>
+                                    <div class="mt-1">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control validate" name="description" rows="3" value ={{product.description}}>{{product.description}}</textarea>
+                                    </div>
+                                    <div class="mt-1">
+                                        <label for="category">Category</label>
+                                        <select class="custom-select tm-select-accounts" id="category" name="category">
+                                            <option disabled selected>{{product.category}}</option>
+                                            {% for category in categories %}
+                                            <option>{{category.name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <!-- Product Image -->
+                                    <div class="product-img modal-img">
+                                        <img src="{{product.image.url}}" alt=""> 
+                                    </div>
+                                    <div class="custom-file mt-3 mb-3">
+                                        <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto"
+                                        value ={{product.image}} /> 
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-primary">UPDATE</button>
@@ -268,7 +257,7 @@
                             </div>
                             </div>
                         </div>
-                        <!-- end of modal edit-->
+                        <!-- End of Edit Product Modal -->
 
                     </div>
                 </div>
@@ -276,6 +265,4 @@
         </div>
     </div>
     <!-- Product Details Area End -->
-</body>
-</html>
 {% endblock content %}

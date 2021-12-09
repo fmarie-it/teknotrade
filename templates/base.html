@@ -63,7 +63,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 2000;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 2000;">
         <div class="container-fluid">
             <!-- Navbar brand -->
             <a class="navbar-brand nav-link core-ignore" href="{% url 'user_app:home_view' %}">
@@ -352,66 +352,5 @@
     <script src="{% static 'js/plugins.js' %}"></script>
     <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script>
-
-    <!-- Edit Product Modal -->
-    <div class="modal fade modal-mg" id="EditModal-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content w-75 modal-center tm-bg-primary-dark tm-block tm-block-h-auto tc-white">
-            <div class="modal-header">
-                <h5 class="modal-title tc-white">Product Details</h5>
-                <button type="button" class="close tc-white" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="updateForm" method="POST" action="{% url 'user_app:add_product_view' %}" class="tm-edit-product-form " enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="modal-body">
-                <label>Product ID</label>
-                <input type="text" name="product-id" value = {{product.id}} disabled><br>
-                <div class="mt-1">
-                    <label for="name">Product Name</label>
-                    <input id="name" name="product_name" type="text" class="form-control validate" value ={{product.product_name}} >
-                </div>
-                <div class="mt-1">
-                    <label for="description">Description</label>
-                    <textarea class="form-control validate" name="description" rows="3" value ={{product.description}}>{{product.description}}</textarea>
-                </div>
-                <div class="mt-1">
-                    <label for="category">Category</label>
-                    <select class="custom-select tm-select-accounts" id="category" name="category">
-                        <option disabled selected>{{product.category}}</option>
-                        {% for category in categories %}
-                        <option>{{category.name}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <!-- Product Image -->
-                <div class="product-img modal-img">
-                    <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
-                    <!-- Hover Thumb -->
-                    <!-- <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt=""> -->
-                </div>
-                <div class="custom-file mt-3 mb-3">
-                    <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto"
-                    value ={{product.image}} /> <!--multiple-->
-                </div>
-                <!-- <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="btn btn-primary btn-block mx-aut" type="file" id="formFile">
-                </div> -->
-                <!-- <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                    <input class="form-control" type="file" id="formFileMultiple" multiple>
-                </div> -->
-            </div>
-            <div class="modal-footer">
-                <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-primary">UPDATE</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-            </div>
-            </form>
-        </div>
-        </div>
-    </div>
-    <!-- End of Edit Product Modal -->
 </body>
 </html>
