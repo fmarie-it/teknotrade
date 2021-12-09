@@ -364,7 +364,12 @@ class OfferView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            return render(request, 'Offers.html')
+            offer = Offer.objects.all()
+
+            context = {
+                'offer': offer,
+            }
+            return render(request, 'Offers.html', context)
         else:
             return redirect("user_app:login_view")
 
@@ -570,3 +575,13 @@ class EditProductView(View):
             return redirect('user_app:search_product_view')
         else:
             return HttpResponse('Invalid!') #form.errors
+
+class EachView(View):
+    
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+
+            return render(request, 'view_eachprod.html')
+        else:
+            return redirect("user_app:login_view")

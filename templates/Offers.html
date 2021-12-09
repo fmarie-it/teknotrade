@@ -3,74 +3,102 @@
 
 {% block content %}
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
 
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
-<div class="card">
-  <div class="row">
-      <div class="col-md-8 cart">
-          <div class="title">
-              <div class="row">
-                  <div class="col">
-                      <h4><b>Trading Cart</b></h4>
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+</style>
+
+<div class="products-catagories-area clearfix">
+    <div class="amado-pro-catagory clearfix">
+        <div class="container tm-mt-big tm-mb-big">
+            <div class="row">
+              <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                  <div class="row">
+                    <form method="POST" action="">
+                      <div class="row">
+                          {% for offer in offer %}
+                          <!-- Single Product Area -->
+                          <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                              <div class="single-product-wrapper">
+                                  <div id="divCheckbox" style="display: none;">
+                                      <input
+                                      name="product_id"
+                                      type="text"
+                                      value="{{product.id}}"/>
+                                  </div>
+                                  <h6>My Offer</h6>
+                                  <div class="product-img">
+                                    <p style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
+                                      <img src="{{offer.image.url}}" alt="">
+                            
+                                      <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt="">
+                                  </div>
+    
+                                  <div class="product-description d-flex align-items-center justify-content-between product-padding">
+                                      <div class="product-meta-data">
+                                          <div class="line"></div>
+                                          <a href="{% url 'user_app:profile_view'%}">
+                                              <h6>{{offer.offer_name}}</h6>
+                                          </a>
+                                      </div>
+                                          
+                                      </div>
+                                  </div>
+      
+                                  <div class="col-12 mt-4">
+                                    <a href="#" class="previous round">&#8249;</a>
+                                    <a href="{{offer.image.url}}" class="next round">&#8250;</a>      
+                                 </div>
+  
+                        </div>
+                        <div class="col-12 mt-4">
+                            <input type="submit" class="btn btn-primary btn-block text-uppercase" value="Update Offer">
+                          </div>
+                        <div class="col-12 mt-4">
+                            <input type="submit" class="btn btn-primary btn-block text-uppercase" value="Delete Offer">
+                          </div>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                          {% empty %}
+                              <h3>No photos...</h3>
+                          {% endfor %}
+                      </div>
+                  </form>
+                                   
+                    </div>
                   </div>
-                  <div class="col align-self-center text-right text-muted">3 items</div>
+                </div>
               </div>
-          </div>
-          <div class="row border-top border-bottom">
-              <div class="row main align-items-center">
-                  <div class="col-2"><img class="img-fluid" src="https://dfb503wu29eo2.cloudfront.net/slir/h1200/png24-front/bookcover0010363.jpg"></div>
-                  <div class="col">
-                      <div class="row text-muted">Books</div>
-                      <div class="row">Nature Kingdom</div>
-                  </div>              
-                  <div class="col"><button class="btn">Offer</button></div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="row main align-items-center">
-                  <div class="col-2"><img class="img-fluid" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/56d96263885635.5acd0047cf3e6.jpg"></div>
-                  <div class="col">
-                      <div class="row text-muted">Books</div>
-                      <div class="row">The Hobbit</div>
-                  </div>
-                  <div class="col"><button class="btn">Offer</button></div>
-              </div>
-          </div>
-          <div class="row border-top border-bottom">
-              <div class="row main align-items-center">
-                  <div class="col-2"><img class="img-fluid" src="https://cdn.images.express.co.uk/img/dynamic/39/590x/secondary/Harry-Potter-and-the-Cursed-Child-poster-461923.jpg"></div>
-                  <div class="col">
-                      <div class="row text-muted">Books</div>
-                      <div class="row">Harry Potter and the Cursed Child</div>
-                  </div>
-                  <div class="col"><button class="btn">Offer</button></div>
-              </div>
-          </div>
-          <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-      </div>
-      <div class="col-md-4 summary">
-          <div>
-              <h5><b>Summary</b></h5>
-          </div>
-          <hr>
-          <div class="row">
-              <div class="col" style="padding-left:0;">ITEMS 3</div>
-          </div>
-          <form>
-              <p>SHIPPING</p> <select>
-                  <option class="text-muted">Standard-Delivery- &dollar;5.00</option>
-              </select>
-              <p>GIVE CODE</p> <input id="code" placeholder="Enter your code">
-          </form>
-          <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-              
-          </div> <button class="btn">CHECKOUT</button>
-      </div>
-  </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 {% endblock content %}
