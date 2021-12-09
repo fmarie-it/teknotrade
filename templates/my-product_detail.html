@@ -223,15 +223,15 @@
                                 <div class="modal-body">
                                     <label>Product ID</label>
                                     <input type="text" name="product-id" value = {{product.id}} disabled><br>
-                                    <div class="mt-1">
+                                    <div class="mt-2">
                                         <label for="name">Product Name</label>
                                         <input id="name" name="product_name" type="text" class="form-control validate" value ={{product.product_name}} >
                                     </div>
-                                    <div class="mt-1">
+                                    <div class="mt-2">
                                         <label for="description">Description</label>
                                         <textarea class="form-control validate" name="description" rows="3" value ={{product.description}}>{{product.description}}</textarea>
                                     </div>
-                                    <div class="mt-1">
+                                    <div class="mt-2">
                                         <label for="category">Category</label>
                                         <select class="custom-select tm-select-accounts" id="category" name="category">
                                             <option disabled selected>{{product.category}}</option>
@@ -241,13 +241,23 @@
                                         </select>
                                     </div>
                                     <!-- Product Image -->
-                                    <div class="product-img modal-img">
-                                        <img src="{{product.image.url}}" alt=""> 
+                                    <div class="modal-img" >
+                                        <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
+                                        <!-- Hover Thumb -->
+                                        <!-- <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt=""> -->
                                     </div>
                                     <div class="custom-file mt-3 mb-3">
                                         <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto"
-                                        value ={{product.image}} /> 
+                                        value ={{product.image}} /> <!--multiple-->
                                     </div>
+                                    <!-- <div class="mb-3">
+                                        <label for="formFile" class="form-label">Default file input example</label>
+                                        <input class="btn btn-primary btn-block mx-aut" type="file" id="formFile">
+                                    </div> -->
+                                    <!-- <div class="mb-3">
+                                        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                    </div> -->
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-primary">UPDATE</button>
