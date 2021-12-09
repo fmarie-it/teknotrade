@@ -504,10 +504,13 @@ class MyProductDetailView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            # context = {
-            #     'reports': report,
-            # }
-            return render(request, 'my-product_detail.html') #, context
+            product = Product.objects.first()
+            categories = Category.objects.all()
+            context = {
+                'product': product,
+                'categories': categories,
+            }
+            return render(request, 'my-product_detail.html', context) #, context
         else:
             return redirect("user_app:login_view")
 
@@ -546,3 +549,60 @@ class AdminUserTableView(View):
     
         return HttpResponse('not valid')
         
+class EditProductView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            categories = Category.objects.all()
+            # custom_user = User.objects.get(id=user)
+            # consumer = Consumer.objects.get(custom_user=custom_user)
+            # consumer = custom_user.get_all_registered_consumer.all()
+
+            context = {
+                'categories': categories,
+            }
+            return render(request, 'edit_product.html', context) #, context
+        else:
+            return redirect("user_app:login_view")
+
+    def post(self,request):
+        user = request.user
+        #categories = user.category_set.all()
+        # categories = None
+
+        if request.method == 'POST':
+            product_name = request.POST.get('product_name')
+            description = request.POST.get('description')
+            category = request.POST.get('category')
+            # images = request.FILES.getlist('images')
+            #Category.objects.filter(name=category)
+
+            if len(request.FILES) != 0 and category is not None:
+                images = request.FILES.get('images')
+                categories = Category.objects.get(name=category)
+
+                # for image in images:
+                #     product = Product.objects.create(
+                #         user=user,
+                #         product_name=product_name,
+                #         image=image,
+                #         description=description,
+                #         category=categories
+                #     )
+                # product.save()
+
+                product = Product.objects.create(
+                            user=user,
+                            product_name=product_name,
+                            image=images,
+                            description=description,
+                            category=categories
+                        )
+
+            product.save()
+            messages.success(request, "Product Added Successfully!")
+
+            return redirect('user_app:search_product_view')
+        else:
+            return HttpResponse('Invalid!') #form.errors
