@@ -129,8 +129,10 @@
                         <!-- Product Image -->
                         <div class="product-img">
                             <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
-                            <!-- Hover Thumb -->
-                            <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt="">
+                            {% if product.image %}
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src="{{product.image.url}}" alt="">
+                            {% endif %}
                         </div>
 
                         <!-- Product Description -->
@@ -153,7 +155,7 @@
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 </div>
                                 <div class="cart">
-                                    <a href="{% url 'user_app:myproduct_detail_view' %}" class="product"data-toggle="tooltip" data-placement="left" title="View Product"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="{% url 'user_app:myproduct_detail_view' pk=product.id %}" class="product"data-toggle="tooltip" data-placement="left" title="View Product"><i class="bi bi-eye-fill"></i></a>
                                 </div>
                             </div>
                         </div>
