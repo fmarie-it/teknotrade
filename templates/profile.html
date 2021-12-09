@@ -2,7 +2,54 @@
 {% load static %}
 
 {% block content %}
+<style type="text/css">
+    .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: dimgray;
+}
 
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
 <link rel="stylesheet" type="text/css" href="{% static 'css/pages/profile.css' %}" />
 <div class="products-catagories-area clearfix">
     <div class="amado-pro-catagory clearfix">
@@ -52,16 +99,53 @@
                             <div>{{add.street}} {{add.brgy}} {{add.cityprovince}} {{add.zipcode}}</div>
                             {% endfor %}
 
-                        </div>
+                           </div>
                         </div>
                        
                     </form>
-                    <!-- <div class="gap-3 icons d-flex flex-row justify-content-center align-items-center"> 
+                      <div class="tab">
+                         <button class="tablinks" onclick="openCity(event, 'View My Trade')">My Trade</button>
+                         <button class="tablinks" onclick="openCity(event, 'View My Reports')">My Reports</button>
+                         
+                    </div>
+
+                    <div id="View My Trade" class="tabcontent">
+                        <h3>London</h3>
+                         <p>London is the capital city of England.</p>
+                    </div>
+
+                    <div id="View My Reports" class="tabcontent">
+                        <h3>Paris</h3>
+                         <p>Paris is the capital of France.</p> 
+                    </div>
+
+                    <div id="Tokyo" class="tabcontent">
+                        <h3>Tokyo</h3>
+                        <p>Tokyo is the capital of Japan.</p>
+                    </div>
+
+                <script>
+                    function openCity(evt, cityName) {
+                     var i, tabcontent, tablinks;
+                     tabcontent = document.getElementsByClassName("tabcontent");
+                     for (i = 0; i < tabcontent.length; i++) {
+                       tabcontent[i].style.display = "none";
+                      }
+                    tablinks = document.getElementsByClassName("tablinks");
+                         for (i = 0; i < tablinks.length; i++) {
+                         tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+                    document.getElementById(cityName).style.display = "block";
+                        evt.currentTarget.className += " active";
+                    }
+                    </script>
+                    <br>
+                    <div class="gap-3 icons d-flex flex-row justify-content-center align-items-center"> 
                         <span><i class="fab fa-twitter"></i></span> 
                         <span><i class="fab fa-facebook-f"></i></span> 
                         <span><i class="fab fa-instagram"></i></span> 
                         <span><i class="fab fa-linkedin"></i></span> 
-                    </div> -->
+                    </div> 
                     <div class="d-flex mt-2"> 
                         <a href="{% url 'user_app:edit_profile_view' %}" class="edit-btn btn btn-sm btn-outline-light">Edit Profile</a> 
                     </div>
