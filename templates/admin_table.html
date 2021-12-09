@@ -17,6 +17,7 @@
         .table-container{
             padding: 0 10%;
             margin: 40px auto 0;
+
         }
         .heading{
                 
@@ -24,11 +25,13 @@
             text-align: center;
             color: black;
             margin-bottom: 40px;
+
         }
         .table{
             background-color: white;
             width:100%;
             border-collapse: collapse;
+            border: 1px solid black;
         }
         .table thead{
             background-color: ee2828;
@@ -41,17 +44,17 @@
             opacity: 1;
             padding: 12px;
             vertical-align: top;
-            border: 1px solid #dee2e685;
+            border: 1px solid black;
         }
         .table tbody tr td{
             font-size: 14px;
             letter-spacing: 0.35px;
             font-weight: normal;
             color: #f1f1f1;
-            background-color: #3c3f44;
+            background-color: white;
             padding: 8px;
             text-align: center;
-            border: 1px solid #dee2e685;
+            border: 1px solid black;
         }
 @media (max-width :768px){
     .table thead{
@@ -80,10 +83,10 @@
                     {% for user in users %}
 
                     <tr>
-                    <td data-label="ID">{{user.id}}</td>   
-                    <td data-label="Username">{{user.username}}</td>
-                    <td data-label="Message"></td>
-                    <td data-label="Email">{{user.email}}</td>
+                    <td data-label="ID" style="color:black">{{user.id}}</td>   
+                    <td data-label="Username"style="color:black">{{user.username}}</td>
+                    <td data-label="Message" style="color:black"></td>
+                    <td data-label="Email" style="color:black">{{user.email}}</td>
                     <td><a button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{user.id}}">View</a>
 
                         <a  type="button" class="btn btn-primary" data-toggle="modal" data-target="#EditModal-{{user.id}}">Edit</a>

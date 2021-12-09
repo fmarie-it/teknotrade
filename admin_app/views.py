@@ -8,14 +8,16 @@ class AdminDashboard(View):
 
     def get(self, request):
         if request.user.is_staff:
+            users = User.objects.all()
             user = request.user
+
             # custom_user = User.objects.get(id=user)
             # admin = custom_user.user_id.first_name
             # invoice = Invoice.objects.all()
             # consumer = Consumer.objects.all()
 
             context = {
-                'full_name': user.first_name + " " + user.last_name,
+                'users':user,
             }
             return render(request, 'admin_dashboard.html', context)
         else:
