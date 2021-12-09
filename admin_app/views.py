@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import View
 from django.http import HttpResponse
-from user_app.models import User
+from user_app.models import Product, User
 # Create your views here.
 
 class AdminDashboard(View):
@@ -33,3 +33,37 @@ class AdminDashboard(View):
     #     Invoice.objects.create(desc=desc,invoice_date=invoice_date,due_date=due_date,current_bill=current_bill,
     #                             balance=balance,status=status,consumer_id=consumer)    
     #     return redirect('app_admin:admin_view')
+
+class ListProductView(View):
+
+    def get(self, request):
+        if request.user.is_staff:
+            products = Product.objects.exclude(admin_status="pending")
+            context = {
+                'products': products,
+            }
+            return render(request, 'list_product.html', context)
+        else:
+            return redirect("user_app:login_view")
+
+class ProductRequestView(View):
+
+    def get(self, request):
+        if request.user.is_staff:
+            products = Product.objects.all()
+            context = {
+                'products': products,
+            }
+            return render(request, 'product_request.html', context)
+        else:
+            return redirect("user_app:login_view")
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_staff:
+            id = kwargs["id"]
+            product = get_object_or_404(Product, pk=id)
+            product.admin_status = request.POST['status']
+            product.save()
+            return redirect("admin_app:product_request_view")
+        else:
+            return redirect("user_app:login_view")

@@ -9,6 +9,7 @@ h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
 html, body{
+    height: 100%;
   font-family: 'Work Sans', sans-serif;
    font-size: 100%;
    background:#fff; 
@@ -40,12 +41,21 @@ a:hover {
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   margin: 0px auto;
 }
 .left-content {
+    height: 100%;
     float: right;
-        width: 86.5%;
+    width: 86.5%;
+}
+.left-content .mother-grid-inner {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.left-content .mother-grid-inner .inner-block {
+    flex: 1;
 }
 .page-container.sidebar-collapsed {
   transition: all 100ms linear;
