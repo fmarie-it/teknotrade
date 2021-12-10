@@ -66,6 +66,7 @@
                     
                     <th>Report ID</th>
                     <th>Type of Report</th>
+                    <th>Message</th>
                     <th>Date</th>
                     <th>Action</th>
 
@@ -73,9 +74,13 @@
                     {% for report in reports %}
 
                     <tr>
-                    <td data-label="Email">{{report.name}}</td>
+                    <td data-label="Report ID">{{report.id}}</td>  
+                    <td data-label="Type of Report">{{report.type}}</td>
                     <td data-label="Message">{{report.message}}</td>
-                    <td>Date</td>
+                    <td data-label="Date">{{report.date_created}}</td>
+                   
+                    
+
                     <td>
                         <!-- Trigger the modal with a button -->
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View</button>
@@ -100,7 +105,7 @@
      
                           </div>
                         </div>
-        
+                    </td>    
                     </div>
                     </div>
 

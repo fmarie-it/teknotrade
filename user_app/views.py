@@ -342,9 +342,10 @@ class ReportView(View):
     def post(self,request):
         image = request.POST.get('image')
         message = request.POST.get('message')
+        report_type = request.POST.get('report_type')
         user = request.user
         product = Product.objects.get(id = 11)
-        Report.objects.create(image=image,message=message,user=user,product=product)
+        Report.objects.create(image=image,message=message,user=user,product=product,report_type=report_type)
         return redirect('user_app:user_report_view')
 
 class UserReportView(View):
