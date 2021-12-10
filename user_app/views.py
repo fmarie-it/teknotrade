@@ -1,3 +1,4 @@
+from typing_extensions import Required
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.http import HttpResponse
@@ -11,6 +12,7 @@ from .forms import UserForm
 from django.contrib.auth.decorators import login_required
 from user_app.models import Address
 from django.http import Http404
+import os
 #import pyrebase
 
 
@@ -233,7 +235,7 @@ class SearchProductView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            products = Product.objects.all()
+            products = Product.objects.filter(admin_status='accepted', is_deleted=False)
             # product_category = products.filter(user=user)
             # product_category = products.get_category.all()
             categories = Category.objects.all()
@@ -254,7 +256,6 @@ class SearchProductView(View):
 
             context = {
                 'products': products,
-                # 'product': product,
                 'categories': categories,
             }
             return render(request, 'products.html', context) #, context
@@ -400,27 +401,12 @@ class SearchMyProductView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            products = user.get_all_users_product.all # Product.objects.all()
+            products = user.get_all_users_product.all() # Product.objects.all()
             product = Product.objects.filter(user=user).values('category')
-            # products = Product.objects.filter(user=user).get(category=)
-            # for p in products:
-            #     print(p)
+            prod = products.filter(is_deleted=False)
             print(product)
-            # categ = Category.objects.filter(id=product)
-            # for c in categ:
-            #     categs = c.name
-            #     print(categs)
             category = Category.objects.all() 
-            # for categ in product:
-            #     # get_name = categ.
-            #     print(categ)
-            # categ = Category.objects.filter(id=product).values('name') 
-            # print(categ)
-            # product_cat = product.filter(category=category.id)
-            # print(product_cat)
-            # categories = Category.objects.get(id=product_cat)
-            # categories = Category.category_set.all
-            # categories = user.cate
+        
             for cat in category:
                 categories = cat.get_category.all()
                 
@@ -434,7 +420,7 @@ class SearchMyProductView(View):
             print(new)
 
             context = {
-                'products': products,
+                'products': prod,
                 'product': product,
                 'categories': categories,
             }
@@ -575,6 +561,7 @@ class EditProductView(View):
         if request.method == 'POST':
             # if 'updateProduct' in request.POST:
             product_id = request.POST.get('product_id')
+            product = Product.objects.get(id=product_id)
             product_name = request.POST.get('product_name')
             description = request.POST.get('description')
             category = request.POST.get('category')
@@ -582,7 +569,10 @@ class EditProductView(View):
             #Category.objects.filter(name=category)
 
             # if len(request.FILES) != 0 and category is not None:
-            images = request.FILES.get('images')
+            # if len(request.FILES) != 0:
+                # if len(product.image) > 0:
+                #     os.remove(product.image)
+            images = request.FILES['images']
             categories = Category.objects.get(name=category)
             print(categories.id)
 
@@ -601,6 +591,6 @@ class EditProductView(View):
             print("updated")
             messages.success(request, "Product Added Successfully!")
 
-            return redirect('user_app:search_product_view')
+            return redirect('user_app:search_myproduct_view') # user_app:search_product_view
         else:
             return HttpResponse('Invalid!') #form.errors
