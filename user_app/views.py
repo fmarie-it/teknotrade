@@ -340,10 +340,11 @@ class ReportView(View):
             return redirect("user_app:login_view")
 
     def post(self,request):
-        email = request.POST.get('email')
+        image = request.POST.get('image')
         message = request.POST.get('message')
         user = request.user
-        Report.objects.create(name=email,message=message,user=user)
+        product = Product.objects.get(id = 11)
+        Report.objects.create(image=image,message=message,user=user,product=product)
         return redirect('user_app:user_report_view')
 
 class UserReportView(View):
