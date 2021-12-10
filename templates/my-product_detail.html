@@ -220,12 +220,14 @@
                                             {% endfor %}
                                         </select>
                                     </div>
+                                    {% if product.image %}
                                     <!-- Product Image -->
                                     <div class="modal-img" >
                                         <img src="{{product.image.url}}" alt=""> <!-- {% static 'img/product1.jpg' %} -->
                                         <!-- Hover Thumb -->
                                         <!-- <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt=""> -->
                                     </div>
+                                    {% endif %}
                                     <div class="custom-file mt-3 mb-3">
                                         <input name="images" id="fileInput" type="file" class="btn btn-primary btn-block mx-auto" value="{{product.image}}"/> <!--multiple-->
                                     </div>
