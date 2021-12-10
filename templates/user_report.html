@@ -19,7 +19,7 @@
             margin: 40px auto 0;
         }
         .heading{
-            font-size: 40px;
+            font-size: 70px;
             text-align: center;
             color: #f1f1f1;
             margin-bottom: 40px;
@@ -29,13 +29,14 @@
             border-collapse: collapse;
         }
         .table thead{
-            background-color: ee2828;
+           
+            text-align: center;
         }
         .table thead tr th{
-            font-size: 14px;
+            font-size: 25px;
             font-weight: 600;
             letter-spacing: 0.35px;
-            color: #FFFFFF;
+            color: #cf3460;
             opacity: 1;
             padding: 12px;
             vertical-align: top;
@@ -57,6 +58,10 @@
     }
 }
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="table-container">
@@ -66,6 +71,7 @@
                     
                     <th>Report ID</th>
                     <th>Type of Report</th>
+                    <th>Message</th>
                     <th>Date</th>
                     <th>Action</th>
 
@@ -73,9 +79,13 @@
                     {% for report in reports %}
 
                     <tr>
-                    <td data-label="Email">{{report.name}}</td>
+                    <td data-label="Report ID">{{report.id}}</td>  
+                    <td data-label="Type of Report">{{report.type}}</td>
                     <td data-label="Message">{{report.message}}</td>
-                    <td>Date</td>
+                    <td data-label="Date">{{report.date_created}}</td>
+                   
+                    
+
                     <td>
                         <!-- Trigger the modal with a button -->
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View</button>
@@ -87,10 +97,10 @@
                             <!-- Modal content-->
                             <div class="modal-content">
                               <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Reports</h4>
+                                <h4 class="modal-title" style="color:red">Reports</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>                  
                               </div>
-                              <div class="modal-body">
+                              <div class="modal-body" style="color:red" >
                                 <p>asdhajksdhjkqwheuashduqwheuias</p>
                               </div>
                               <div class="modal-footer">
@@ -100,7 +110,7 @@
      
                           </div>
                         </div>
-        
+                    </td>    
                     </div>
                     </div>
 

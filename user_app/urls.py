@@ -26,6 +26,7 @@ urlpatterns = [
     path('add-user',views.AddUserView.as_view(), name="add_new_user"),
     path('product/addoffer',views.AddOfferView.as_view(), name="add_offer_view"),
     path('product/edit',views.EditProductView.as_view(), name="edit_product_view"),
+    path('product/viewoffer',views.EachView.as_view(), name="view_eachprod_view"),
     # path('overview',views.Overview.as_view(), name="overview_view"),
     # path('history',views.HistoryView.as_view(), name="history_view"),
     # path('pay-bills',views.PaybillsView.as_view(), name="pay_view"),

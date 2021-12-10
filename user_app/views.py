@@ -340,10 +340,12 @@ class ReportView(View):
             return redirect("user_app:login_view")
 
     def post(self,request):
-        email = request.POST.get('email')
+        image = request.POST.get('image')
         message = request.POST.get('message')
+        report_type = request.POST.get('report_type')
         user = request.user
-        Report.objects.create(name=email,message=message,user=user)
+        product = Product.objects.get(id = 11)
+        Report.objects.create(image=image,message=message,user=user,product=product,report_type=report_type)
         return redirect('user_app:user_report_view')
 
 class UserReportView(View):
@@ -364,7 +366,12 @@ class OfferView(View):
     def get(self, request):
         if not request.user.is_staff:
             user = request.user
-            return render(request, 'Offers.html')
+            offer = Offer.objects.all()
+
+            context = {
+                'offer': offer,
+            }
+            return render(request, 'Offers.html', context)
         else:
             return redirect("user_app:login_view")
 
@@ -570,3 +577,13 @@ class EditProductView(View):
             return redirect('user_app:search_product_view')
         else:
             return HttpResponse('Invalid!') #form.errors
+
+class EachView(View):
+    
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+
+            return render(request, 'view_eachprod.html')
+        else:
+            return redirect("user_app:login_view")
