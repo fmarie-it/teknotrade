@@ -283,15 +283,11 @@ class GalleryView(View):
 class ProfileView(View):
 
     def get(self,request):
-        users = User.objects.all()
         user = request.user
-        address = user.get_user_address.all
-        context ={
-            'users':user,
-            'addresses':address
+        context = {
+            'user': user,
         }
-
-        return render(request, 'profile.html', context)
+        return render(request, 'user_profile.html', context)
 
 
 class EditProfileView(View):
