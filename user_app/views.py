@@ -573,3 +573,54 @@ class EachView(View):
             return render(request, 'view_eachprod.html')
         else:
             return redirect("user_app:login_view")
+
+class UpdateOfferView(View):
+
+    def get(self, request):
+        if not request.user.is_staff:
+            user = request.user
+            offer = Offer.objects.first()
+            context = {
+                'offer': offer,
+            }
+            # custom_user = User.objects.get(id=user)
+            # consumer = Consumer.objects.get(custom_user=custom_user)
+            # consumer = custom_user.get_all_registered_consumer.all()
+
+            return render(request, 'Offers.html', context) #, context
+        else:
+            return redirect("user_app:login_view")
+
+    def post(self,request):
+        if request.method == 'POST':
+            # if 'updateProduct' in request.POST:
+            product_id = request.POST.get('product_id')
+            product = Product.objects.get(id=product_id)
+            offer_name = request.POST.get('offer_name')
+            description = request.POST.get('description')
+            # images = request.FILES.getlist('images')
+            #Category.objects.filter(name=category)
+
+            # if len(request.FILES) != 0 and category is not None:
+            # if len(request.FILES) != 0:
+                # if len(product.image) > 0:
+                #     os.remove(product.image)
+            images = request.FILES['images']
+
+            offer = Offer.objects.filter(id=product_id).update(
+                        offer_name=offer_name,
+                        image=images,
+                        description=description,
+                    )
+                
+            print(product)
+            print(product_id)
+            print(offer_name)  
+            print(images)
+            print(description)
+            print("updated")
+            messages.success(request, "Update Offer Successfully!")
+
+            return redirect('user_app:my-offer_view') # user_app:search_product_view
+        else:
+            return HttpResponse('Invalid!')

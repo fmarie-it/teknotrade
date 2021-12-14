@@ -3,26 +3,71 @@
 
 {% block content %}
 
+<style>
+.left {
+  min-height: 150px;
+  width: 200px;
+  margin: 20px;
+  border: 50px;
+}
+.right {
+  border-color: blue;
+  border: 10px;
+  background-color: blue;
+}
+
+</style>
+
 <div class="products-catagories-area clearfix">
     <div class="amado-pro-catagory clearfix">
         <div class="container tm-mt-big tm-mb-big">
             <div class="row">
               <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
                 <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-                  <div class="row">
+                  <div class="left">
                     <form method="POST" action="">
-                      <div class="row">
-
-<h1>View Offer Each product</h1>
-
+                        <div class="row tm-edit-product-row">
+                          
+                            <div class="form-group mb-3">
+                              <label
+                                for="name"
+                                >Product Name
+                              </label>
+                              <div id="divCheckbox" style="display: none;">
+                                <input
+                                name="product_id"
+                                type="text"
+                                value="{{product.id}}"/>
+                            </div>
+                            <div class="form-group mb-3">
+                              <label
+                                for="description"
+                                >Description
+                              </label>
+                              <div class="short_overview my-5">
+                                <p>{{product.description}} <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                            </div>
+                      </div>
+                      </div>
                       </div>
                   </form>
                  </div>
+                 <div class="right">
+                  <div class="image">
+                    <div class="product-img">
+                      <p style="float: right; font-size: 9pt; text-align: center; width: 30%; margin-top: -50%; margin-bottom: 0.5em;">
+                        <img src="{{offer.image.url}}" alt="">
+              
+                        <img class="hover-img" src="{% static 'images/clothes1.jpg' %}" alt="">
+                    </div>
+                      </div>
                 </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-    </div>                    
+  </div>
+</div>                    
 
 
 {% endblock content %}
